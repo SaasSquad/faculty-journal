@@ -10,11 +10,14 @@ import Archive from "./Pages/Archive"
 import Contact from "./Pages/Contact"
 import About from "./Pages/About"
 import Faqs from "./Pages/Faqs"
+import Header from './Components/Header'
+import Register from './Pages/Register'
 
 function App() {
   return (
     <Router>
       <div className='App'>
+        <Header />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/submissions' element={<Submissions />} />
@@ -26,10 +29,11 @@ function App() {
           <Route path='./contact' element={<Contact />} />
           <Route path='./about' element={<About />} />
           <Route path='./faqs' element={<Faqs />} />
+          <Route path='./Register' element={<Register />} />
         </Routes>
       </div>
     </Router>
   )
 }
 
-export default App
+export default App;
