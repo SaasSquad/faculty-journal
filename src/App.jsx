@@ -12,12 +12,16 @@ import About from "./Pages/About"
 import Faqs from "./Pages/Faqs"
 import Header from './Components/Header'
 import Register from './Pages/Register'
+import Login from './Pages/Login'
 
 function App() {
   return (
     <Router>
       <div className='App'>
         <Header />
+        {/* <Register/> */}
+        {/* <Publication/> */}
+        {/* < Login/> */}
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/submissions' element={<Submissions />} />
