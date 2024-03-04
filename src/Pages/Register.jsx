@@ -2,6 +2,8 @@ import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import logo from '../assets/Images/logo.png'
+import { postData } from '../Services/Api'; // Import the postData function
+
 
 const validationSchema = Yup.object({
   // Adjusted validation schema based on the new input field names
@@ -26,9 +28,14 @@ const Register = () => {
     // rememberMe: false,
   };
 
-  const onSubmit = (values, { resetForm }) => {
-    console.log(values);
-    resetForm();
+  const onSubmit = async (values, { resetForm }) => {
+    try {
+      await postData('/Register', values); // Adjust the URL path according to your backend API
+      console.log('Register successful');
+      resetForm();
+    } catch (error) {
+      console.error('Register failed:', error);
+    }
   };
 
   return (
