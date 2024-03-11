@@ -1,4 +1,3 @@
-import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import logo from '../assets/Images/logo.png'
@@ -39,11 +38,12 @@ const Register = () => {
   };
 
   return (
-    <div className='flex items-center justify-center h-screen '>
+    <div className='flex items-center justify-center h-screen pt-60'>
        <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
+      className=''
     >
       <Form className="mx-auto max-w-md bg-blue-900 bg-opacity-95 p-8 text-white">
         <div className="mb-4 text-center logo">
