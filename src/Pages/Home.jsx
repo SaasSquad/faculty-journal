@@ -1,3 +1,4 @@
+import Footer from '../Components/Footer'
 const Home = () => {
     return ( <>
         <div className="text-3xl box-border">
@@ -49,6 +50,12 @@ const Home = () => {
                         articles covering advances in recent research of such fields as well as technical notes.
                     </p>
                 </div>
+            </section>
+        </div>
+
+        <div>
+            <section>
+                <Footer/>
             </section>
         </div>
 
