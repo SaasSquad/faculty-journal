@@ -2,10 +2,10 @@ const Home = () => {
     return ( <>
         <div className="text-3xl box-border">
 
-            <section className="bg-[#d9d9d9] box-border  ">
-                <div className="flex justify-center  px-40">
-                    <p className="font-bold text-blue-950">
-                        Lagos State university Engineering And Technology Resarch Journal
+            <section className="bg-[#d9d9d9] px-10 ">
+                <div className="flex justify-center p-20  ">
+                    <p className="font-bold text-blue-950 w-80 text-center">
+                        Lagos State University Engineering And Technology Resarch Journal
                     </p>
                 </div>
                 <div className=" flex justify-around mt-10">

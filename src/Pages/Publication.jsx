@@ -14,10 +14,15 @@ function Publication() {
   //Adding header message
   const Header = ({user}) => {
     return (
-        <header className="bg-gray-800 text-white p-4">
-          <h1 className="text-xl">Welcome, {user.name}</h1>
-        </header>
-      );
+      
+      <header className="bg-gray-800 text-white p-4 text-bold box-border text-center">
+        <h1 className="text-xl m-auto">Welcome, {user.name}</h1>
+        <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+
+      </header>
+
+        
+    );
   }
 //Adding DarkModeToggle
   const DarkModeToggle = ({ darkMode, setDarkMode }) => {
@@ -45,6 +50,7 @@ function Publication() {
   //Adding JournalGrid
   const JournalGrid = ({ journals }) => {
     return (
+      
       <div className="bg-[#bdadad] p-4">
         <div className='flex justify-around'> 
           <p className='font-bold'>YOUR PUBLICATIONS</p>
@@ -65,14 +71,9 @@ function Publication() {
   
   
 
-  
-
-
-
   return (
     <div>
       <Header user={user} />
-      <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
       <JournalGrid journals={journals}/>
     </div>
   );
