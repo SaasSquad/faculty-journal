@@ -6,7 +6,7 @@ export const menuItemsData = [
 
     {
         title: 'PAPERS',
-        url: '/',
+        url: '/papers',
         submenu: [
             {
                 title: 'CURRENT JOURNALS',
@@ -30,50 +30,24 @@ export const menuItemsData = [
          
         ]
     },
-    {
-        title: 'GUIDE FOR AUTHORS',
-        url: '/',
-       
-    },
 
     {
         title: 'EDITORIAL POLICY',
-        url: '/',
+        url: '/editorial',
        
     },
 
 
     {
         title: 'SUBMISSIONS',
-        url: '/',
+        url: '/submission',
        
     },
 
 
     {
         title: 'CONTACT',
-        url: '/',
-    },
-
-
-    {
-        title: 'ABOUT US',
-        url: '/',
-       
-    },
-
-    
-    {
-        title: 'REGISTER',
-        url: '/Pages/Register',
-       
-    },
-
-    
-    {
-        title: 'LOGIN',
-        url: '/',
-       
+        url: '/contact',
     },
 
 ]

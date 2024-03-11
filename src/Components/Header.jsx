@@ -1,47 +1,54 @@
 import { useState } from 'react';
 import Navbar from './NavBar';
 import logo from '../assets/Images/logo.png'
-import jlogo from '../assets/Images/jlogo.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping, faMagnifyingGlass, faBars, faX } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faBars, faX } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     const [mobileDropdown, setMobileDropdown] = useState(false)
     return (
-        <header className="relative z-50  text-[#f3f3f5] font-bold opacity-100 py-4 md:px-10 bg-[#254385] box-border">
-            <div className={`flex justify-between items-center px-2`}>
-               <div className='md:flex items-center justify-center mb-14 '>
+        <header className="relative z-50  text-[#f3f3f5] font-bold opacity-100 bg-[#254385] box-border">
+            <div className={`flex justify-between md:justify-evenly items-center `}>
+                <div className='md:flex ml-10 items-center justify-center'>
                     <a href="/" className="logo">
                         <img
                             alt="Logo"
-                            className="w-8 transform rotate-90 box-border m-auto"
+                            className="w-[20px] transform rotate-90 box-border m-auto"
                             src={logo}
                         />
                     </a>
-               </div>
+                </div>
 
 
-                <div className='hidden md:flex'>
+                <div className='hidden md:flex ml-28'>
                     <Navbar />
-                    <FontAwesomeIcon icon={faMagnifyingGlass} className='text-xl mr-6 hover:text-blue-600 cursor-pointer'/>
                     {/* <FontAwesomeIcon icon={faCartShopping} className='text-xl mr-6 hover:text-blue-600 cursor-pointer'/> */}
+                </div>
+                <div className='md:flex hidden'>
+                    <Link to={'/register'} className="hover:text-blue-600">REGISTER/LOGIN</Link>
+                    <FontAwesomeIcon icon={faMagnifyingGlass} className='text-xl ml-5 hover:text-blue-600 cursor-pointer' />
                 </div>
                 {
                     mobileDropdown ?
-                        <button className='flex md:hidden' onClick={() => setMobileDropdown(false)}>
+                        <button className='flex md:hidden mr-5' onClick={() => setMobileDropdown(false)}>
                             <FontAwesomeIcon icon={faX} />
                         </button>
                         :
-                        <button className='flex md:hidden' onClick={() => setMobileDropdown(true)}>
+                        <button className='flex md:hidden mr-5' onClick={() => setMobileDropdown(true)}>
                             <FontAwesomeIcon icon={faBars} />
                         </button>
                 }
             </div>
             {
                 mobileDropdown &&
-                <div className='absolute py-4 bg-[#072975] text-white w-[100%] flex md:hidden'>
-                    <Navbar mobileDrop="mobileDrop" />
-                </div>
+                <>
+                    <div className='absolute bg-[#072975] h-64 text-white w-[100%] flex md:hidden'>
+                        <Navbar mobileDrop="mobileDrop" />
+                        <Link to={'/register'} className="absolute left-32 mt-56 hover:text-blue-600">REGISTER/LOGIN</Link>
+                        {/* <FontAwesomeIcon icon={faMagnifyingGlass} className='text-xl ml-5 hover:text-blue-600 cursor-pointer' /> */}
+                    </div>
+                </>
             }
         </header>
     );

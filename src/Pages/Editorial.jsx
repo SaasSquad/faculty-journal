@@ -1,5 +1,6 @@
 const Editorial = () => {
-    return ( <></> );
+    return ( <>
+    Hello</> );
 }
  
 export default Editorial;
