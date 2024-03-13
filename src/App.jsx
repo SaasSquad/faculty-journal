@@ -12,15 +12,34 @@ import About from "./Pages/About"
 import Faqs from "./Pages/Faqs"
 import Header from './Components/Header'
 import Register from './Pages/Register'
-// import Login from './Pages/Login'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import axios from 'axios'
+import { createContext } from 'react'
+import Login from './Pages/Login'
+
+export const userContext = createContext()
 
 function App() {
   const location = useLocation()
 
-  console.log(location)
+  const [user, setUser] = useState({})
+
+  axios.defaults.withCredentials = true
+
+  // useEffect(() => {
+  //   axios.get('http://localhost:3001/')
+  //   .then(user => {
+  //     setUser(user.data)
+  //     console.log(user.data)
+  //   })
+  //   .catch(err => {
+  //     console.log(err)
+  //   })
+  // }, [])
 
   return (
-    <div className='App'>
+    <userContext.Provider value={user} className='App'>
         {
           location.pathname != '/register' && <Header />
         }
@@ -39,8 +58,9 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/faqs' element={<Faqs />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
-    </div>
+    </userContext.Provider>
   )
 }
 
