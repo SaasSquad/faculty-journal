@@ -23,7 +23,7 @@ export const menuItemsData = [
 
             {
                 title: 'PUBLICATIONS',
-                url: './Pages/Publication',
+                url: '/Publication',
               
                 
             },
