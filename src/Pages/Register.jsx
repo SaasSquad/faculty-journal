@@ -20,7 +20,7 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    axios.post('http://localhost:3001/signup', { firstName, lastName, email, password })
+    axios.post('https://faculty-journal-backend.onrender.com/signup', { firstName, lastName, email, password })
       .then(() => {
         navigate('/login')
         console.log("success")
