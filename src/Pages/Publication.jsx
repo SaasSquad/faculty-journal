@@ -1,82 +1,108 @@
 
-import React, { useState } from 'react';
-import Switch from "react-switch";
 
+import React, { useState, useRef, useEffect } from 'react';
 
 function Publication() {
+
+  const currentDate = new Date().toLocaleDateString('en-NG'); // 'en-NG' for English in Nigeria (West Africa)
+
   const [user, setUser] = useState({ name: 'Obaseki Samuel' });
   const [journals, setJournals] = useState([
-    { id: 1, title: 'Journal 1', content: 'Lorem ipsum...' },
-    { id: 2, title: 'Journal 2', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio deserunt velit, maxime aut molestiae Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio deserunt velit, maxime aut molestiae deleniti fugit repellat soluta cumque eum nisi nihil et quod quae ab fuga omnis nobis architecto?Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio deserunt velit, maxime aut molestiae deleniti fugit repellat soluta cumque eum nisi nihil et quod quae ab fuga omnis nobis architecto?deleniti fugit repellat soluta cumque eum nisi nihil et quod quae ab fuga omnis nobis architecto?' },
-    // Add more journals as needed
+    { id: 1, title: 'Journal 1', content: 'Lorem ipsum...',  date :currentDate, status: "Pending" },
+    { id: 2, title: 'Journal 2', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit...', date : currentDate, status: "Pending",  },
+    // Add more journals as needed, 
   ]);
-  const [darkMode, setDarkMode] = useState(false);
-  //Adding header message
-  const Header = ({user}) => {
+
+  const Header = ({ user }) => {
+    const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+  
+    const profileDropdownRef = useRef(null);
+  
+    useEffect(() => {
+      const handleClickOutside = (event) => {
+        if (profileDropdownRef.current && !profileDropdownRef.current.contains(event.target)) {
+          setShowProfileDropdown(false);
+        }
+      };
+  
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, []);
+  
+    const toggleProfileDropdown = () => {
+      setShowProfileDropdown(!showProfileDropdown);
+    };
+  
     return (
-      
-      <header className="bg-gray-800 text-white p-4 text-bold box-border text-center">
-        <h1 className="text-xl m-auto">Welcome, {user.name}</h1>
-        <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
-
+      <header className="bg-blue-800 text-white p-4 text-bold box-border text-center">
+        <div className="flex justify-between items-center">
+          <h1 className="text-xl m-auto">Welcome, {user.name}</h1>
+          <div className="relative" ref={profileDropdownRef}>
+            <button
+              onClick={toggleProfileDropdown}
+              onMouseEnter={() => setShowProfileDropdown(true)}
+              className="text-white font-bold bg-[#d9d9d9] rounded-full p-3 md:p-4"
+            >
+              Settings
+            </button>
+            {showProfileDropdown && (
+              <div
+                className="absolute right-0 mt-12 w-48 bg-white rounded-lg shadow-lg"
+              >
+                <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                  Profile
+                </a>
+                <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                  Dashboard
+                </a>
+                <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                  Preferences
+                </a>
+                <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                  Logout
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
       </header>
-
-        
     );
-  }
-//Adding DarkModeToggle
-  const DarkModeToggle = ({ darkMode, setDarkMode }) => {
-  return (
-    <div className="flex justify-end p-4">
-      <label htmlFor="darkModeToggle" className="mr-2">
-        Dark Mode
-      </label>
-      <Switch
-        id="darkModeToggle"
-        checked={darkMode}
-        onChange={setDarkMode}
-        onColor="#2b6cb0"
-        offColor="#718096"
-        uncheckedIcon={false}
-        checkedIcon={false}
-        height={20}
-        width={40}
-        className="react-switch"
-      />
-    </div>
-  );
-};
+  };
+  
+  
 
-  //Adding JournalGrid
   const JournalGrid = ({ journals }) => {
     return (
-      
-      <div className="bg-[#bdadad] p-4">
-        <div className='flex justify-around'> 
-          <p className='font-bold'>YOUR PUBLICATIONS</p>
-          <button className='rounded-2xl px-10 py-3 bg-blue-800 mb-5'>Add</button>
+      <div className="bg-[#ffffff] p-4 md:p-10">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <p className="font-bold text-3xl md:text-4xl">YOUR PUBLICATIONS</p>
+          <button className="rounded-3xl px-6 md:px-10 py-3 text-white bg-[#2516d4] mt-4 md:mt-0">Publish</button>
         </div>
-
-        <div className= {darkMode ? 'bg-black text-white' : 'bg-[#bdadad]'}>
+        <div className="bg-[#bdadad] mt-4 p-4 md:p-10">
           {journals.map((journal) => (
-            <div key={journal.id} className= 'bg-white text-black p-4 mb-4'>
-              <h2 className="text-lg font-semibold text-black">{journal.title}</h2>
-              <p className={darkMode ? 'bg-black text-white mt-2 p-10' : 'bg-[#bdadad] mt-2 p-10'}>{journal.content}</p>
+            <div key={journal.id} className="bg-[#d9d9d9] mt-2 p-4 md:p-10 mb-8 md:mb-20">
+              <h2 className="text-lg md:text-xl font-semibold text-black">{journal.title}</h2>
+              <p className="bg-[#d9d9d9] mt-2 p-4 md:p-10">{journal.content}</p>
+              <div className="bg-[#d9d9d9] md:p-10  flex flex-col md:flex-row justify-between items-center">
+                <p className="text-lg md:text-xl font-semibold text-black">{journal.date}</p>
+                <p className=" bg-red-800 p-2 text-lg md:text-xl font-semibold text-black">{journal.status}</p>
+              </div>
             </div>
           ))}
         </div>
       </div>
     );
   };
-  
-  
 
   return (
     <div>
       <Header user={user} />
-      <JournalGrid journals={journals}/>
+      <JournalGrid journals={journals} />
     </div>
   );
 }
 
 export default Publication;
+
