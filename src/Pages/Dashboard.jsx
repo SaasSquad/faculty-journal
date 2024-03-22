@@ -4,17 +4,23 @@ import axios from 'axios';
 import { useState, useRef, useEffect } from 'react';
 import api from '../api/Api';
 import { Link } from 'react-router-dom';
+import Publish from '../Components/Publish';
 
 function Dashboard() {
 
   const currentDate = new Date().toLocaleDateString('en-NG'); // 'en-NG' for English in Nigeria (West Africa)
 
+  const [publishPopUp, setPublishPopUp] = useState(false);
   const [user, setUser] = useState({ name: 'Obaseki Samuel' });
   const [journals, setJournals] = useState([
     { id: 1, title: 'Journal 1', content: 'Lorem ipsum...',  date :currentDate, status: "Pending" },
     { id: 2, title: 'Journal 2', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit...', date : currentDate, status: "Pending",  },
     // Add more journals as needed, 
   ]);
+
+  const publishToggle = () => {
+    setPublishPopUp(!publishPopUp)
+  }
 
   axios.defaults.withCredentials = true
     const handleLogout = () => {
@@ -94,7 +100,7 @@ function Dashboard() {
       <div className="bg-[#ffffff] md:mx-24 p-4 md:px-10 md:py-16">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="font-bold text-xl md:text-2xl">YOUR PUBLICATIONS</p>
-          <button className="rounded-lg px-4 md:px-8 py-2 text-white bg-[#2516d4] mt-4 md:mt-0">Publish</button>
+          <button onClick={publishToggle} className="rounded-lg px-4 md:px-8 py-2 text-white bg-[#2516d4] mt-4 md:mt-0">Publish</button>
         </div>
         <div className="bg-[#bdadad] mt-12 p-4 md:p-10">
           {journals.map((journal) => (
@@ -114,6 +120,7 @@ function Dashboard() {
 
   return (
     <div>
+      {publishPopUp && <Publish onClose={publishToggle}/>}
       <Header user={user} />
       <JournalGrid journals={journals} />
     </div>
