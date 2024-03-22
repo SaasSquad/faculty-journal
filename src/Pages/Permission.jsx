@@ -2,9 +2,10 @@ import axios from 'axios';
 import { useState, useRef, useEffect } from 'react';
 import api from '../api/Api';
 import { Link } from 'react-router-dom';
-import SubmittedJournals from '../Components/SubmittedJournals';
+import GetUser from '../Components/GetUser';
+import CurrentAdmin from '../Components/CurrentAdmins';
 
-const Submissions = () => {
+const Permission = () => {
     const currentDate = new Date().toLocaleDateString('en-NG'); // 'en-NG' for English in Nigeria (West Africa)
 
 
@@ -94,12 +95,13 @@ const Submissions = () => {
     <div className='w-[100vw] px-[10vw] pt-[20px] flex flex-col'>
         <button className='ml-auto bg bg-[#2516D4] py-[10px] px-[10px] text-[12px] rounded-xl text-white '><Link to="/admindashboard">Dashboard</Link></button>
         <div>
-            <p className='font-bold ml-[25vw] mb-[30px] lg:ml-[35vw] lg:mb-[50px]'>SUBMISSIONS</p>
-            <SubmittedJournals/>
+            <p className='font-bold ml-[25vw] lg:ml-[35vw]'>PERMISSION</p>
+            <GetUser />
+            <CurrentAdmin />
         </div>
     </div>
     </>
   );
 }
  
-export default Submissions;
+export default Permission;
