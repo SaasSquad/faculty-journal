@@ -20,6 +20,7 @@ import Login from './Pages/Login'
 import AdminDashBoard from './Pages/AdminDashboard'
 import api from './api/Api'
 import Permission from './Pages/Permission'
+import Profile from './Pages/Profile'
 
 export const userContext = createContext()
 
@@ -43,13 +44,14 @@ function App() {
   return (
     <userContext.Provider value={user} className='App'>
         {
-          location.pathname != '/login' && location.pathname != '/register' && location.pathname != '/dashboard' && location.pathname !='/admindashboard' && location.pathname != '/permission' && location.pathname != '/submission'? <Header /> : <></>
+          location.pathname != '/login' && location.pathname != '/register' && location.pathname != '/dashboard' && location.pathname !='/admindashboard' && location.pathname != '/permission' && location.pathname != '/submission' && location.pathname != '/profile'? <Header /> : <></>
         }
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/submissions' element={<Submissions />} />
           <Route path='/papers' element={<Papers />} />
           <Route path='/editorial' element={<Editorial />} />
+          <Route path='/profile' element={<Profile />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/permission' element={<Permission />} />
           <Route path='/submission' element={<Submissions />} />

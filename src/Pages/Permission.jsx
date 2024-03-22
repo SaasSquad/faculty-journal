@@ -67,7 +67,7 @@ const Permission = () => {
               <div
                 className="absolute -right-2 md:-right-10 text-center mt-2 font-bold w-32 md:w-48 bg-white rounded-lg shadow-lg"
               >
-                <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                <Link to="/profile" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                   Profile
                 </Link>
                 <Link to="/dashboard" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
