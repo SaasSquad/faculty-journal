@@ -1,32 +1,36 @@
 // import { Formik, Field, Form, ErrorMessage } from 'formik';
 // import * as Yup from 'yup';
-import axios from 'axios';
 import { useState } from 'react';
-
+import api from '../api/Api';
+import { Link } from 'react-router-dom';
+import logo from '../assets/Images/logo.png'
+import axios from 'axios';
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   axios.defaults.withCredentials = true
-
   const handleSubmit = (e) => {
     e.preventDefault()
-    axios.post('https://faculty-journal-backend.onrender.com/login', { email, password })
+    api.post('/login', { email, password }, {withCredentials:true})
       .then(res => {
-        console.log(res.data)
         if (res.data === "OK") {
-          window.location.href = '/'
+          window.location.href = '/dashboard'
         }
       })
       .catch(err => console.log(err))
   }
 
   return (
-    <div className="flex items-center justify-center h-screen">
-      <form className="mx-auto max-w-md bg-blue-900 bg-opacity-95 p-4 text-white" onSubmit={handleSubmit}>
-        {/* Form fields */}
-
+    <div className="flex bg-blue-200 items-center justify-center h-screen">
+      <form className="mx-auto max-w-md bg-blue-900 rounded-lg bg-opacity-95 px-16 pt-2 pb-12 text-white" onSubmit={handleSubmit}>
+        <img
+          alt="Logo"
+          className="w-[30px] transform rotate-90 box-border m-auto"
+          src={logo}
+        />
+        <h2 className='text-center text-xl -mt-4 mb-6 font-bold'>Log in</h2>
         <div className="mb-4">
           <label htmlFor="email" className="block text-sm font-medium">
             EMAIL:
@@ -37,7 +41,8 @@ const Login = () => {
             name="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
-            className="mt-1 p-2 w-full rounded-md border border-gray-300 text-black opacity-90 font-bold font-serif"
+            required
+            className="mt-1 py-2 px-4 w-full rounded-md border border-gray-300 text-black opacity-90 font-bold font-serif"
           />
 
         </div>
@@ -51,22 +56,23 @@ const Login = () => {
             id="password"
             name="password"
             value={password}
+            required
             onChange={e => setPassword(e.target.value)}
-            className="mt-1 p-2 w-full rounded-md border border-gray-300 text-black opacity-90 font-bold font-sans"
+            className="mt-1 py-2 px-4 w-full rounded-md border border-gray-300 text-black opacity-90 font-bold font-sans"
           />
 
         </div>
 
         <button
-        className="bg-yellow-500 text-white py-3 px-10 rounded-md hover:bg-green-600 focus:outline-none focus:ring focus:border-blue-300 ml-0"
+          className="bg-yellow-500 text-white py-3 px-10 rounded-md hover:bg-green-600 focus:outline-none focus:ring focus:border-blue-300 ml-0"
         >Login</button>
 
         <div className="mt-4">
           <p>
             Don't have an account yet?{' '}
-            <a href="./Login" className="text-white hover:bg-green-600">
+            <Link to="/register" className="text-white p-1 rounded-lg hover:bg-green-600">
               Register
-            </a>
+            </Link>
           </p>
         </div>
       </form>
