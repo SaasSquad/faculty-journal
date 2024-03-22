@@ -1,6 +1,13 @@
 import axios from 'axios';
 
+// const API_URL = 'https://busy-erin-centipede-yoke.cyclic.app';
+
 const API_URL = 'https://faculty-journal-backend.onrender.com';
+
+// const API_URL = 'http://localhost:3001';
+
+
+axios.defaults.withCredentials = true
 
 const api = axios.create({
   baseURL: API_URL,
@@ -10,23 +17,3 @@ const api = axios.create({
 });
 
 export default api;
-
-// export const postData = async (path, data) => {
-//   try {
-//     const response = await api.post(path, data);
-//     return response.data;
-//   } catch (error) {
-//     console.error('Error while sending data:', error);
-//     throw error;
-//   }
-// };
-
-// export const getData = async (path) => {
-//   try {
-//     const response = await api.get(path);
-//     return response.data;
-//   } catch (error) {
-//     console.error('Error while fetching data:', error);
-//     throw error;
-//   }
-// };

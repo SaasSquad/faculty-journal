@@ -4,7 +4,7 @@ import Home from "./Pages/Home"
 import Submissions from "./Pages/Submissions"
 import Papers from "./Pages/Papers"
 import Editorial from "./Pages/Editorial"
-import Publication from "./Pages/Publication"
+import Dashboard from "./Pages/Dashboard"
 // import Announcement from "./Pages/Announcements"
 // import Archive from "./Pages/Archive"
 import Contact from "./Pages/Contact"
@@ -18,6 +18,7 @@ import axios from 'axios'
 import { createContext } from 'react'
 import Login from './Pages/Login'
 import AdminDashBoard from './Pages/AdminDashboard'
+import api from './api/Api'
 
 export const userContext = createContext()
 
@@ -28,21 +29,20 @@ function App() {
 
   axios.defaults.withCredentials = true
 
-  // useEffect(() => {
-  //   axios.get('http://localhost:3001/')
-  //   .then(user => {
-  //     setUser(user.data)
-  //     console.log(user.data)
-  //   })
-  //   .catch(err => {
-  //     console.log(err)
-  //   })
-  // }, [])
+  useEffect(() => {
+    api.get('/user')
+    .then(user => {
+      setUser(user.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }, [])
 
   return (
     <userContext.Provider value={user} className='App'>
         {
-          location.pathname != '/register' && <Header />
+          location.pathname != '/login' && location.pathname != '/register' && location.pathname != '/dashboard' ? <Header /> : <></>
         }
         {/* <Register/> */}
         {/* <Publication/> */}
@@ -52,7 +52,7 @@ function App() {
           <Route path='/submissions' element={<Submissions />} />
           <Route path='/papers' element={<Papers />} />
           <Route path='/editorial' element={<Editorial />} />
-          <Route path='/publication' element={<Publication />} />
+          <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/admindashboard' element={<AdminDashBoard />} />
           {/* <Route path='/announcement' element={<Announcement />} /> */}
           {/* <Route path='/archive' element={<Archive />} /> */}

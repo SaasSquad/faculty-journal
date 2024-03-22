@@ -5,33 +5,6 @@ export const menuItemsData = [
     },
 
     {
-        title: 'PAPERS',
-        url: '/papers',
-        submenu: [
-            {
-                title: 'CURRENT JOURNALS',
-                url: '/',
-              
-            },
-
-            {
-                title: 'ARCHIVES',
-                url: '/',
-              
-                
-            },
-
-            {
-                title: 'PUBLICATIONS',
-                url: '/publication',
-              
-                
-            },
-         
-        ]
-    },
-
-    {
         title: 'EDITORIAL POLICY',
         url: '/editorial',
        
