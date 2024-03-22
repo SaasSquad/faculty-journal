@@ -17,6 +17,7 @@ import { useEffect } from 'react'
 import axios from 'axios'
 import { createContext } from 'react'
 import Login from './Pages/Login'
+import AdminDashBoard from './Pages/AdminDashboard'
 
 export const userContext = createContext()
 
@@ -52,6 +53,7 @@ function App() {
           <Route path='/papers' element={<Papers />} />
           <Route path='/editorial' element={<Editorial />} />
           <Route path='/publication' element={<Publication />} />
+          <Route path='/admindashboard' element={<AdminDashBoard />} />
           {/* <Route path='/announcement' element={<Announcement />} /> */}
           {/* <Route path='/archive' element={<Archive />} /> */}
           <Route path='/contact' element={<Contact />} />

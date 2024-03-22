@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import Publish from '../Components/Publish';
 
-function Publication() {
+const AdminDashBoard = () => {
 
-  const currentDate = new Date().toLocaleDateString('en-NG'); // 'en-NG' for English in Nigeria (West Africa)
+    const currentDate = new Date().toLocaleDateString('en-NG'); // 'en-NG' for English in Nigeria (West Africa)
   const [publishPopUp, setPublishPopUp] = useState(false);
   const [user, setUser] = useState({ name: 'Obaseki Samuel' });
   const [journals, setJournals] = useState([
@@ -101,14 +101,11 @@ function Publication() {
       </>
     );
   };
-
-  return (
+    return ( 
     <div>
-      <Header user={user} />
-      <JournalGrid journals={journals} />
-    </div>
-  );
+        <Header user={user} />
+        <JournalGrid journals={journals} />
+    </div> );
 }
-
-export default Publication;
-
+ 
+export default AdminDashBoard;
