@@ -11,6 +11,7 @@ const DashboardHeader = ({ user }) => {
 
     axios.defaults.withCredentials = true
     const handleLogout = () => {
+        localStorage.clear()
         api.post('/signout')
             .then(res => {
                 if (res.data === 'OK') {

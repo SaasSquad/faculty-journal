@@ -31,7 +31,8 @@ function App() {
   axios.defaults.withCredentials = true
 
   useEffect(() => {
-    api.get('/user')
+    const token = localStorage.getItem('jwt_token')
+    api.get(`/user/${token}`, {headers: {'Authorization': `Bearer ${token}`}})
     .then(user => {
       setUser(user.data)
     })

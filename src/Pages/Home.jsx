@@ -9,7 +9,8 @@ const Home = () => {
 
     axios.defaults.withCredentials = true
     useEffect(() => {
-        api.get('/student/articles')
+        const token = localStorage.getItem('jwt_token')
+        api.get('/student/articles', {headers: {'Authorization': `Bearer ${token}`}})
             .then(res => {
                 setArticles(res.data)
             })

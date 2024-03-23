@@ -14,7 +14,8 @@ function AdminDashboard() {
   const user = useContext(userContext)
 
   useEffect(() => {
-    api.get('/student/articles')
+    const token = localStorage.getItem('jwt_token')
+    api.get(`/student/articles/${token}`, { headers: { 'Authorization': `Bearer ${token}` } })
       .then(res => {
         setArticles(res.data)
       })
@@ -30,17 +31,18 @@ function AdminDashboard() {
   const handleSubmit = (e) => {
     e.preventDefault()
     handlePublishPopUp()
+    const token = localStorage.getItem('jwt_token')
     const formData = new FormData()
     formData.append('title', title)
     formData.append('description', description)
     formData.append('file', file)
-    api.post("/student/create-article", formData, {
+    api.post(`/student/create-article/${token}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
     })
       .then(res => {
-        console.log(res.data)
+        window.location.href = '/dashboard'
       })
       .catch(err => {
         console.log(err)
