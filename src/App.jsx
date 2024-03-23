@@ -44,7 +44,13 @@ function App() {
   return (
     <userContext.Provider value={user} className='App'>
         {
-          location.pathname != '/login' && location.pathname != '/register' && location.pathname != '/dashboard' && location.pathname !='/admindashboard' && location.pathname != '/permission' && location.pathname != '/submission' && location.pathname != '/profile'? <Header /> : <></>
+          location.pathname != '/login'
+          && location.pathname != '/register'
+          && location.pathname != '/dashboard'
+          && location.pathname !='/admindashboard'
+          && location.pathname != '/permission' &&
+          location.pathname != '/submissions' && location.pathname != '/profiles'
+          ? <Header /> : <></>
         }
         <Routes>
           <Route path='/' element={<Home />} />
@@ -54,7 +60,6 @@ function App() {
           <Route path='/profile' element={<Profile />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/permission' element={<Permission />} />
-          <Route path='/submission' element={<Submissions />} />
           <Route path='/admindashboard' element={<AdminDashBoard />} />
           {/* <Route path='/announcement' element={<Announcement />} /> */}
           {/* <Route path='/archive' element={<Archive />} /> */}

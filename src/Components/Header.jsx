@@ -1,23 +1,27 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import Navbar from './NavBar';
 import logo from '../assets/Images/logo.png'
+import defaultDP from '../assets/Images/defaultDP.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faBars, faX } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { userContext } from '../App';
 import axios from 'axios';
 import api from '../api/Api';
+import Cookies from 'universal-cookie';
 
 const Header = () => {
     const user = useContext(userContext)
 
     const [mobileDropdown, setMobileDropdown] = useState(false)
     const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+    const cookie = new Cookies()
 
     axios.defaults.withCredentials = true
     const handleLogout = () => {
         api.post('/signout')
             .then(res => {
+                cookie.remove('jwt')
                 if (res.data === 'OK') {
                     window.location.to = '/'
                 }
@@ -72,7 +76,9 @@ const Header = () => {
                                 onMouseEnter={() => setShowProfileDropdown(true)}
                                 className="text-white font-bold bg-[#d9d9d9] rounded-full md:px-4 md:py-2"
                             >
-                                IMG
+                                <img
+                                    className="w-[20px] m-auto"
+                                    src={defaultDP} alt="" />
                             </button>
                             {showProfileDropdown && (
                                 <div
@@ -81,15 +87,21 @@ const Header = () => {
                                     <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                                         Profile
                                     </Link>
-                                    <Link to="/dashboard" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
-                                        Dashboard
-                                    </Link>
+                                    {
+                                        user.role === 'admin' ?
+                                            <Link to="/admindashboard" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                                                Dashboard
+                                            </Link>
+                                            : <Link to="/dashboard" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                                                Dashboard
+                                            </Link>
+                                    }
                                     <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                                         Preferences
                                     </Link>
-                                    <button onClick={handleLogout} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                                    <Link reloadDocument onClick={handleLogout} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                                         Logout
-                                    </button>
+                                    </Link>
                                 </div>
                             )}
                         </div> : <Link to={'/login'} className="hover:text-blue-600">REGISTER/LOGIN</Link>

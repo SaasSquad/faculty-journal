@@ -5,17 +5,26 @@ import api from '../api/Api';
 import { Link } from 'react-router-dom';
 import logo from '../assets/Images/logo.png'
 import axios from 'axios';
+import Cookies from 'universal-cookie';
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const cookie = new Cookies()
 
   axios.defaults.withCredentials = true
   const handleSubmit = (e) => {
     e.preventDefault()
-    api.post('/login', { email, password }, {withCredentials:true})
+    api.post('/login', { email, password })
       .then(res => {
-        if (res.data === "OK") {
+        cookie.set('jwt', res.data.token, {
+          expires: new Date(Date.now()+1512000000)
+        })
+        console.log(res.data.token)
+
+        if (res.data.userDB.role === 'admin') {
+          window.location.href = '/admindashboard'
+        } else {
           window.location.href = '/dashboard'
         }
       })
