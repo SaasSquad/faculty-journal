@@ -43,7 +43,13 @@ function App() {
   return (
     <userContext.Provider value={user} className='App'>
         {
-          location.pathname != '/login' && location.pathname != '/register' && location.pathname != '/dashboard' && location.pathname !='/admindashboard' && location.pathname != '/permission' && location.pathname != '/submission'? <Header /> : <></>
+          location.pathname != '/login'
+          && location.pathname != '/register'
+          && location.pathname != '/dashboard'
+          && location.pathname !='/admindashboard'
+          && location.pathname != '/permission' &&
+          location.pathname != '/submissions'
+          ? <Header /> : <></>
         }
         <Routes>
           <Route path='/' element={<Home />} />
