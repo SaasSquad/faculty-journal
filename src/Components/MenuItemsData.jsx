@@ -13,7 +13,7 @@ export const menuItemsData = [
 
     {
         title: 'SUBMISSIONS',
-        url: '/submission',
+        url: '/submissions',
        
     },
 

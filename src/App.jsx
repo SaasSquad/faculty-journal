@@ -20,6 +20,7 @@ import Login from './Pages/Login'
 import AdminDashBoard from './Pages/AdminDashboard'
 import api from './api/Api'
 import Permission from './Pages/Permission'
+import Profile from './Pages/Profile'
 import PDFViewer from './Pages/PDFViewer'
 
 export const userContext = createContext()
@@ -50,7 +51,7 @@ function App() {
           && location.pathname != '/dashboard'
           && location.pathname !='/admindashboard'
           && location.pathname != '/permission' &&
-          location.pathname != '/submissions'
+          location.pathname != '/submissions' && location.pathname != '/profiles'
           ? <Header /> : <></>
         }
         <Routes>
@@ -58,9 +59,9 @@ function App() {
           <Route path='/submissions' element={<Submissions />} />
           <Route path='/papers' element={<Papers />} />
           <Route path='/editorial' element={<Editorial />} />
+          <Route path='/profile' element={<Profile />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/permission' element={<Permission />} />
-          <Route path='/submission' element={<Submissions />} />
           <Route path='/admindashboard' element={<AdminDashBoard />} />
           {/* <Route path='/announcement' element={<Announcement />} /> */}
           {/* <Route path='/archive' element={<Archive />} /> */}
