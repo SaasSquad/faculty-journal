@@ -6,7 +6,8 @@ const SubmittedJournals = () => {
   const [articles, setArticles] = useState([])
 
   useEffect(() => {
-    api.get('/admin/pending-articles')
+    const token = localStorage.getItem('jwt_token')
+    api.get('/admin/pending-articles', {headers: {'Authorization': `Bearer ${token}`}})
       .then(res => {
         setArticles(res.data)
       })
