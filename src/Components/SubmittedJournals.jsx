@@ -1,15 +1,19 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import api from "../api/Api";
 import axios from "axios";
+import { userContext } from "../App";
 
 const SubmittedJournals = () => {
   const [articles, setArticles] = useState([])
+  const user = useContext(userContext)
 
+  axios.defaults.withCredentials = true
   useEffect(() => {
     const token = localStorage.getItem('jwt_token')
-    api.get('/admin/pending-articles', {headers: {'Authorization': `Bearer ${token}`}})
+    api.get(`/admin/pending-articles/${token}`, { headers: { 'Authorization': `Bearer ${token}` } })
       .then(res => {
         setArticles(res.data)
+        console.log(res.data)
       })
       .catch(err => {
         console.log(err)
@@ -17,9 +21,22 @@ const SubmittedJournals = () => {
   }, [])
 
   const handleApprove = (_id) => {
-    axios.defaults.withCredentials = true
+    const token = localStorage.getItem('jwt_token')
+    api.put(`/admin/approve-article/${_id}`, { headers: { 'Authorization': `Bearer ${token}` } })
+      .then(res => {
+        setArticles(res.data)
+        console.log(res.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
 
-    api.put('/admin/approve-article/'+_id)
+  
+
+  const handleReject = (_id) => {
+    const token = localStorage.getItem('jwt_token')
+    api.put(`/admin/reject/${_id}`, { headers: { 'Authorization': `Bearer ${token}` } })
       .then(res => {
         setArticles(res.data)
         console.log(res.data)
@@ -33,30 +50,34 @@ const SubmittedJournals = () => {
     <>
       {
         typeof (articles) == 'object' ?
-          articles.map(article => {
-            return (
-              <div key={article._id}>
-                <div className="bg-[#BDADAD] px-[10px] py-[10px]">
-                  <ul>
-                    <li className="bg-[#D9D9D9] flex flex-row px-[10px] py-[10px]">
-                      <div className="ml-[5px]">
-                        <h2 className="font-bold">Title: {article.title}</h2>
-                        <p className="bg-[#d9d9d9] mt-4">Description: {article.description}</p>
-                        <p className="text-[10px] mt-[10px]">Author: {article.author.firstName} {article.author.lastName}</p>
-                        <p className="text-[10px] mt-[10px]">Date: {article.createdAt}</p>
-                        <button className="bg-[#2516D4] px-[15px] py-[5px] text-[10px] mt-[10px] font-bold text-white">READ</button>
+          articles.map(article =>
+          (
+            <div key={article._id}>
+              <div className="bg-[#BDADAD] p-4 md:py-10 md:px-16">
+                <ul>
+                  <li className="bg-[#D9D9D9] md:flex px-[10px] py-[10px]">
+                    <div className="ml-[5px] flex flex-col items-center md:items-start">
+                      <h2 className="font-bold">Title: {article.title}</h2>
+                      <p className="bg-[#d9d9d9] my-6">Description: {article.description}</p>
+                      <div className="text-center mb-3 md:text-left">
+                        <p className="mb-2 text-sm text-black">{article.createdAt}</p>
+                        <p className="text-black text-sm">Author: {article.author.lastName} {article.author.firstName}</p>
+                        <p className="text-black text-sm">Academic status: {user.academicStatus}</p>
                       </div>
-                      <div className="ml-auto flex flex-col">
-                        <button onClick={() => handleApprove(article._id)} className="bg-[#00BF35] px-[20px] py-[10px] text-white text-[10px]">APPROVE</button>
-                        <button className="bg-[#BF0000] px-[20px] py-[10px] text-white text-[10px] mt-[10px]">DECLINE</button>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
+                      <button className="bg-blue-600 justify-self-center text-sm text-white mr-4 rounded-md px-2 py-1 font-semibold text-black">READ</button>
+                    </div>
+                    <div className="ml-auto mt-2 flex flex-col">
+                      <button onClick={() => handleApprove(article._id)} className="bg-[#00BF35] rounded-md px-[20px] py-[10px] text-white text-[10px]">APPROVE</button>
+                      <button onClick={() => handleReject(article._id)} className="bg-[#BF0000] rounded-md px-[20px] py-[10px] text-white text-[10px] mt-[10px]">DECLINE</button>
+                    </div>
+                  </li>
+                </ul>
               </div>
-            )
-          })
-          : <></>
+            </div>
+
+          )
+          )
+          : <p className="mt-10 bg-[#d9d9d9] text-xl mx-8 md:mx-24 p-10">{articles}</p>
       }
     </>);
 }

@@ -20,6 +20,7 @@ import Login from './Pages/Login'
 import AdminDashBoard from './Pages/AdminDashboard'
 import api from './api/Api'
 import Permission from './Pages/Permission'
+import PDFViewer from './Pages/PDFViewer'
 
 export const userContext = createContext()
 
@@ -68,6 +69,7 @@ function App() {
           <Route path='/faqs' element={<Faqs />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
+          {/* <Route path='/pdfviewer' element={<PDFViewer />} /> */}
         </Routes>
     </userContext.Provider>
   )

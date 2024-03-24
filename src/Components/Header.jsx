@@ -126,7 +126,8 @@ const Header = () => {
                     <div className='absolute bg-[#072975] h-64 text-white w-[100%] flex md:hidden'>
                         <Navbar mobileDrop="mobileDrop" />
                         {
-                            user.firstName ? <p className="absolute left-32 mt-56 hover:text-blue-600">{user.firstName} {user.lastName}</p> : <Link to={'/register'} className="absolute left-32 mt-56 hover:text-blue-600">REGISTER/LOGIN</Link>
+                            user.firstName ? user.role === 'admin' ? <Link to={'/admindashboard'} className="absolute left-32 mt-56 hover:text-blue-600">{user.firstName} {user.lastName}</Link> :
+                                <Link to={'/dashboard'} className="absolute left-32 mt-56 hover:text-blue-600">{user.firstName} {user.lastName}</Link> : <Link to={'/login'} className="absolute left-32 mt-56 hover:text-blue-600">REGISTER/LOGIN</Link>
                         }
                         {/* <FontAwesomeIcon icon={faMagnifyingGlass} className='text-xl ml-5 hover:text-blue-600 cursor-pointer' /> */}
                     </div>
