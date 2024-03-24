@@ -50,8 +50,9 @@ function App() {
           && location.pathname != '/register'
           && location.pathname != '/dashboard'
           && location.pathname !='/admindashboard'
-          && location.pathname != '/permission' &&
-          location.pathname != '/submissions' && location.pathname != '/profiles'
+          && location.pathname != '/permission'
+          && location.pathname != '/submissions'
+          && location.pathname != '/profile'
           ? <Header /> : <></>
         }
         <Routes>
