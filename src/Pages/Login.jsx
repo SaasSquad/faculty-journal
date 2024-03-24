@@ -16,7 +16,6 @@ const Login = () => {
     api.post('/login', { email, password })
       .then(res => {
         localStorage.setItem('jwt_token', res.data.token)
-        console.log(res.data.token)
 
         if (res.data.userDB.role === 'admin') {
           window.location.href = '/admindashboard'

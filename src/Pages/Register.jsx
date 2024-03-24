@@ -31,7 +31,6 @@ const Register = () => {
     api.post('/signup', { firstName, lastName, email, password })
       .then(() => {
         navigate('/login')
-        console.log("success")
       })
       .catch(err => console.log(err))
   }
