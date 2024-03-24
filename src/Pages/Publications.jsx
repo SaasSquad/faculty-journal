@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Publication from '../Components/Publication';
 
-const Papers = () => {
+const Publications = () => {
 
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -37,4 +37,4 @@ const Papers = () => {
   );
 };
 
-export default Papers;
+export default Publications;

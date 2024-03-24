@@ -3,7 +3,10 @@ export const menuItemsData = [
         title: 'HOME',
         url: '/',
     },
-
+    {
+        title: 'PUBLICATONS',
+        url: '/publications',
+    },
     {
         title: 'EDITORIAL POLICY',
         url: '/editorial',
@@ -12,8 +15,8 @@ export const menuItemsData = [
 
 
     {
-        title: 'SUBMISSIONS',
-        url: '/submissions',
+        title: "AUTHOR'S GUIDE",
+        url: '/guide',
        
     },
 
