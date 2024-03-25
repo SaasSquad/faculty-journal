@@ -7,20 +7,21 @@ const ArticleGrid = ({ article }) => {
     const [file, setFile] = useState(null)
 
     const handleOpenFile = async (_id) => {
-        api.get(`/file/${_id}`, { responseType: "arraybuffer"})
+        api.get(`/file/${_id}`)
                 .then((res) => {
                     const file = res.data;
+                    console.log(file)
 
                     const fileData = new Blob([file], { type: "application/pdf"});
-
+                    setFile(fileData)
                     if(window.FileReader) {
-                        const reader = new FileReader;
-                        reader.onload = () => {
+                        // const reader = new FileReader;
+                        // reader.onload = () => {
                             const fileUrl = URL.createObjectURL(fileData);
                             window.open(fileUrl, "_blank");
-                        }
+                        // }
 
-                        reader.readAsDataURL(fileData);
+                        // reader.readAsDataURL(fileData);
                     } else {
                         const fileUrl = URL.createObjectURL(fileData);
                         window.open(fileUrl, "_blank");
@@ -67,8 +68,8 @@ const ArticleGrid = ({ article }) => {
                     <p className="text-black text-sm">Academic status: {user.academicStatus}</p>
                 </div>
                 <div className="">
-                    <button onClick={() => handleOpenFile(article._id)} className=" bg-blue-600 text-white mr-4 rounded-md px-2 py-1 font-semibold text-black">READ</button>
-                    <button onClick={() => handleDelete(article._id)} className="bg-red-700 text-white rounded-md px-2 py-1 font-semibold text-black">DELETE</button>
+                    <button onClick={() => handleOpenFile(article._id)} className=" bg-blue-600 text-white mr-4 rounded-md px-2 py-1 font-semibold ">READ</button>
+                    <button onClick={() => handleDelete(article._id)} className="bg-red-700 text-white rounded-md px-2 py-1 font-semibold ">DELETE</button>
                 </div>
             </div>
             <div>

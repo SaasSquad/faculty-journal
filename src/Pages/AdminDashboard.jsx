@@ -5,6 +5,7 @@ import DashboardHeader from '../Components/DashboardHeader';
 import ArticleGrid from '../Components/ArticleGrid';
 import AdminSubheader from '../Components/AdminSubheader';
 import { userContext } from '../App';
+import axios from 'axios';
 
 function AdminDashboard() {
   const user = useContext(userContext)
@@ -36,7 +37,15 @@ function AdminDashboard() {
     const formData = new FormData()
     formData.append('title', title)
     formData.append('description', description)
-    formData.append('file', file)
+    formData.append('file', file, file.name)
+    
+  //   axios.post('/images', file)
+  //   .then(res => {
+  //     console.log('success')
+  // })
+  //   .catch(err => {
+  //     console.log(err)
+  //   })
     api.post(`/admin/create-article/${token}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
