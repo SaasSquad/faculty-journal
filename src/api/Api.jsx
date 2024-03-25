@@ -13,6 +13,7 @@ const api = axios.create({
   baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json',
+    'Accept' : 'application/json, application/pdf, image/jpeg, image/png',
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
   },

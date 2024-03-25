@@ -43,12 +43,14 @@ function AdminDashboard() {
         'Content-Type': 'multipart/form-data'
       }})
       .then(res => {
-        window.location.href = '/dashboard'
+        window.location.href = '/admindashboard'
       })
       .catch(err => {
         console.log(err)
       })
   }
+
+  
 
   return (
     <div>

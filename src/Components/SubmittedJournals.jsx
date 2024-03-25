@@ -64,7 +64,7 @@ const SubmittedJournals = () => {
                         <p className="text-black text-sm">Author: {article.author.lastName} {article.author.firstName}</p>
                         <p className="text-black text-sm">Academic status: {user.academicStatus}</p>
                       </div>
-                      <button className="bg-blue-600 justify-self-center text-sm text-white mr-4 rounded-md px-2 py-1 font-semibold text-black">READ</button>
+                      <button className="bg-blue-600 justify-self-center text-sm text-white mr-4 rounded-md px-2 py-1 font-semibold">READ</button>
                     </div>
                     <div className="ml-auto mt-2 flex flex-col">
                       <button onClick={() => handleApprove(article._id)} className="bg-[#00BF35] rounded-md px-[20px] py-[10px] text-white text-[10px]">APPROVE</button>

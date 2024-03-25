@@ -7,16 +7,32 @@ const ArticleGrid = ({ article }) => {
     const user = useContext(userContext)
     const [file, setFile] = useState(null)
 
-    const handleOpenFile = (_id) => {
-        api.get(`/admin/file/${_id}`)
-                .then(res => {
+    const handleOpenFile = async (_id) => {
+        api.get(`/file/${_id}`, { responseType: "arraybuffer"})
+                .then((res) => {
+                    const file = res.data;
+
+                    const fileData = new Blob([file], { type: "application/pdf"});
+
+                    if(window.FileReader) {
+                        const reader = new FileReader;
+                        reader.onload = () => {
+                            const fileUrl = URL.createObjectURL(fileData);
+                            window.open(fileUrl, "_blank");
+                        }
+
+                        reader.readAsDataURL(fileData);
+                    } else {
+                        const fileUrl = URL.createObjectURL(fileData);
+                        window.open(fileUrl, "_blank");
+                    }
                     // let reader = new FileReader()
                     // reader.readAsDataURL(res.data)
                     // reader.onload = (e) => {
                     //     setFile(e.target.result)
                     // }
                     // const file = res.data
-                    setFile(res.data)
+                    // setFile(res.data)
                     // console.log(res.data)
             })
             .catch(err => (
