@@ -17,7 +17,6 @@ const Register = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate()
 
-  axios.defaults.withCredentials = true
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -31,7 +30,6 @@ const Register = () => {
     api.post('/signup', { firstName, lastName, email, password })
       .then(() => {
         navigate('/login')
-        console.log("success")
       })
       .catch(err => console.log(err))
   }

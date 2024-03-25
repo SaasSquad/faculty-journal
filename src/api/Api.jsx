@@ -6,9 +6,6 @@ const API_URL = 'https://faculty-journal-backend.onrender.com';
 
 // const API_URL = 'http://localhost:3001';
 
-
-axios.defaults.withCredentials = true
-
 const api = axios.create({
   baseURL: API_URL,
   headers: {

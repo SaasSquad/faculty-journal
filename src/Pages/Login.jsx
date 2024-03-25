@@ -9,14 +9,12 @@ import axios from 'axios';
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
-  axios.defaults.withCredentials = true
+  
   const handleSubmit = (e) => {
     e.preventDefault()
     api.post('/login', { email, password })
       .then(res => {
         localStorage.setItem('jwt_token', res.data.token)
-        console.log(res.data.token)
 
         if (res.data.userDB.role === 'admin') {
           window.location.href = '/admindashboard'

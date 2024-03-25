@@ -6,22 +6,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faBars, faX } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { userContext } from '../App';
-import axios from 'axios';
 import api from '../api/Api';
-import Cookies from 'universal-cookie';
 
 const Header = () => {
     const user = useContext(userContext)
 
     const [mobileDropdown, setMobileDropdown] = useState(false)
     const [showProfileDropdown, setShowProfileDropdown] = useState(false);
-    const cookie = new Cookies()
 
-    axios.defaults.withCredentials = true
     const handleLogout = () => {
+        localStorage.clear()
         api.post('/signout')
             .then(res => {
-                cookie.remove('jwt')
                 if (res.data === 'OK') {
                     window.location.to = '/'
                 }
@@ -66,7 +62,6 @@ const Header = () => {
 
                 <div className='hidden md:flex ml-28'>
                     <Navbar />
-                    {/* <FontAwesomeIcon icon={faCartShopping} className='text-xl mr-6 hover:text-blue-600 cursor-pointer'/> */}
                 </div>
                 <div className='md:flex hidden items-center'>
                     {
@@ -129,7 +124,6 @@ const Header = () => {
                             user.firstName ? user.role === 'admin' ? <Link to={'/admindashboard'} className="absolute left-32 mt-56 hover:text-blue-600">{user.firstName} {user.lastName}</Link> :
                                 <Link to={'/dashboard'} className="absolute left-32 mt-56 hover:text-blue-600">{user.firstName} {user.lastName}</Link> : <Link to={'/login'} className="absolute left-32 mt-56 hover:text-blue-600">REGISTER/LOGIN</Link>
                         }
-                        {/* <FontAwesomeIcon icon={faMagnifyingGlass} className='text-xl ml-5 hover:text-blue-600 cursor-pointer' /> */}
                     </div>
                 </>
             }

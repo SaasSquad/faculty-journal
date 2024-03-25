@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react'
 import Footer from '../Components/Footer'
-import axios from 'axios'
 import api from '../api/Api'
 
 const Home = () => {
 
     const [articles, setArticles] = useState([])
+    const [file, setFile] = useState(null)
 
-    axios.defaults.withCredentials = true
     useEffect(() => {
         const token = localStorage.getItem('jwt_token')
-        api.get('/student/articles', {headers: {'Authorization': `Bearer ${token}`}})
+        api.get('/student/articles', { headers: { 'Authorization': `Bearer ${token}` } })
             .then(res => {
                 setArticles(res.data)
             })
@@ -18,6 +17,23 @@ const Home = () => {
                 console.log(err)
             })
     }, [])
+
+    const handleOpenFile = (_id) => {
+        api.get(`/admin/file/${_id}`)
+                .then(res => {
+                    // let reader = new FileReader()
+                    // reader.readAsDataURL(res.data)
+                    // reader.onload = (e) => {
+                    //     setFile(e.target.result)
+                    // }
+                    // const file = res.data
+                    setFile(res.data)
+                    // console.log(res.data)
+            })
+            .catch(err => (
+                console.log(err)
+            ))
+    }
 
     return (<>
         <div className="box-border">
@@ -41,8 +57,17 @@ const Home = () => {
                 </div>
                 {typeof (articles) == 'object' ? articles.map(article => {
                     return (
-                        <div key={article._id} className="mt-10 bg-[#d9d9d9] text-xl mx-8 md:mx-24 p-10">
-                            {article.title}
+                        <div key={article._id} className="mt-10 bg-[#d9d9d9] mx-8 md:mx-24 p-10">
+                            <h2 className="text-2xl font-semibold text-black">{article.title}</h2>
+                            <p className="bg-[#d9d9d9] mt-4">{article.description}</p>
+                            <div className="bg-[#d9d9d9] pt-10 pb-4 flex flex-col md:flex-row justify-between items-center">
+                                <div className="text-center mb-3 md:text-left md:mb-0">
+                                    <p className="mb-2 text-sm text-black">{article.createdAt}</p>
+                                    <p className="text-black text-sm">Author: {article.author.lastName} {article.author.firstName}</p>
+                                    <p className="text-black text-sm">Academic status: {article.academicStatus}</p>
+                                </div>
+                                <button onClick={() => handleOpenFile(article._id)} className=" bg-blue-600 text-white mr-4 rounded-md px-4 py-2 text-lg font-semibold text-black">READ</button>
+                            </div>
                         </div>
                     )
                 }) : <p className="mt-10 bg-[#d9d9d9] text-xl mx-8 md:mx-24 p-10">{articles}</p>}

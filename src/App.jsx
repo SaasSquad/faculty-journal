@@ -2,7 +2,7 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 // import './App.css'
 import Home from "./Pages/Home"
 import Submissions from "./Pages/Submissions"
-import Papers from "./Pages/Papers"
+import Publications from "./Pages/Publications"
 import Editorial from "./Pages/Editorial"
 import Dashboard from "./Pages/Dashboard"
 // import Announcement from "./Pages/Announcements"
@@ -22,6 +22,7 @@ import api from './api/Api'
 import Permission from './Pages/Permission'
 import Profile from './Pages/Profile'
 import PDFViewer from './Pages/PDFViewer'
+import GuideForAuthors from '../GuideForAuthors'
 
 export const userContext = createContext()
 
@@ -58,14 +59,13 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/submissions' element={<Submissions />} />
-          <Route path='/papers' element={<Papers />} />
+          <Route path='/guide' element={<GuideForAuthors />} />
+          <Route path='/publications' element={<Publications />} />
           <Route path='/editorial' element={<Editorial />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/permission' element={<Permission />} />
           <Route path='/admindashboard' element={<AdminDashBoard />} />
-          {/* <Route path='/announcement' element={<Announcement />} /> */}
-          {/* <Route path='/archive' element={<Archive />} /> */}
           <Route path='/contact' element={<Contact />} />
           <Route path='/about' element={<About />} />
           <Route path='/faqs' element={<Faqs />} />

@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { userContext } from "../App";
 import api from "../api/Api";
-import pdf from "../assets/Images/file_1711257582116.pdf" 
 
 const ArticleGrid = ({ article }) => {
     const user = useContext(userContext)
@@ -40,6 +39,18 @@ const ArticleGrid = ({ article }) => {
             ))
     }
 
+    const handleDelete = (_id) => {
+        const token = localStorage.getItem('jwt_token')
+        api.delete(`/admin/delete-article/${_id}`, { headers: { 'Authorization': `Bearer ${token}` } })
+          .then(res => {
+            location.reload()
+            console.log(res.data)
+          })
+          .catch(err => {
+            console.log(err)
+          })
+      }
+
     return (
         <div className="bg-[#d9d9d9] relative mt-2 p-4 md:py-10 md:px-16 mb-8 md:mb-20">
             {
@@ -57,17 +68,16 @@ const ArticleGrid = ({ article }) => {
                 </div>
                 <div className="">
                     <button onClick={() => handleOpenFile(article._id)} className=" bg-blue-600 text-white mr-4 rounded-md px-2 py-1 font-semibold text-black">READ</button>
-                    <button className="bg-red-700 text-white rounded-md px-2 py-1 font-semibold text-black">DELETE</button>
+                    <button onClick={() => handleDelete(article._id)} className="bg-red-700 text-white rounded-md px-2 py-1 font-semibold text-black">DELETE</button>
                 </div>
             </div>
             <div>
-                <h2>PDF Viewer</h2>
-                {
+                {/* {
                     file &&
                     // <PDFViewer file={file}/>
                     // <embed src={file} className="w-[100%] h-[100%]"/>
-                    <iframe src={pdf} type="application/pdf" />
-                }
+                    // <iframe src={file} type="application/pdf" />
+                } */}
             </div>
         </div>
     );
