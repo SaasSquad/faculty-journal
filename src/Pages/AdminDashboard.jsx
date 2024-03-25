@@ -37,7 +37,7 @@ function AdminDashboard() {
     const formData = new FormData()
     formData.append('title', title)
     formData.append('description', description)
-    formData.append('file', file, file.name)
+    formData.append('file', file)
     
   //   axios.post('/images', file)
   //   .then(res => {

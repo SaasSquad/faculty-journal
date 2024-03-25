@@ -1,56 +1,25 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { userContext } from "../App";
-import api from "../api/Api";
+import api, { API_URL } from "../api/Api";
 
 const ArticleGrid = ({ article }) => {
     const user = useContext(userContext)
-    const [file, setFile] = useState(null)
 
-    const handleOpenFile = async (_id) => {
-        api.get(`/file/${_id}`)
-                .then((res) => {
-                    const file = res.data;
-                    console.log(file)
-
-                    const fileData = new Blob([file], { type: "application/pdf"});
-                    setFile(fileData)
-                    if(window.FileReader) {
-                        // const reader = new FileReader;
-                        // reader.onload = () => {
-                            const fileUrl = URL.createObjectURL(fileData);
-                            window.open(fileUrl, "_blank");
-                        // }
-
-                        // reader.readAsDataURL(fileData);
-                    } else {
-                        const fileUrl = URL.createObjectURL(fileData);
-                        window.open(fileUrl, "_blank");
-                    }
-                    // let reader = new FileReader()
-                    // reader.readAsDataURL(res.data)
-                    // reader.onload = (e) => {
-                    //     setFile(e.target.result)
-                    // }
-                    // const file = res.data
-                    // setFile(res.data)
-                    // console.log(res.data)
-            })
-            .catch(err => (
-                console.log(err)
-            ))
+    const showPdf = (pdf) => {
+        window.open(`${API_URL}/files/${pdf}`, "_blank", "noreferrer");
     }
 
     const handleDelete = (_id) => {
         const token = localStorage.getItem('jwt_token')
         api.delete(`/admin/delete-article/${_id}`, { headers: { 'Authorization': `Bearer ${token}` } })
-          .then(res => {
-            location.reload()
-            console.log(res.data)
-          })
-          .catch(err => {
-            console.log(err)
-          })
-      }
+            .then(res => {
+                location.reload()
+                console.log(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
     return (
         <div className="bg-[#d9d9d9] relative mt-2 p-4 md:py-10 md:px-16 mb-8 md:mb-20">
@@ -68,17 +37,11 @@ const ArticleGrid = ({ article }) => {
                     <p className="text-black text-sm">Academic status: {user.academicStatus}</p>
                 </div>
                 <div className="">
-                    <button onClick={() => handleOpenFile(article._id)} className=" bg-blue-600 text-white mr-4 rounded-md px-2 py-1 font-semibold ">READ</button>
+                    <button onClick={() => showPdf(article.file)} className=" bg-blue-600 text-white mr-4 rounded-md px-2 py-1 font-semibold ">READ</button>
                     <button onClick={() => handleDelete(article._id)} className="bg-red-700 text-white rounded-md px-2 py-1 font-semibold ">DELETE</button>
                 </div>
             </div>
             <div>
-                {/* {
-                    file &&
-                    // <PDFViewer file={file}/>
-                    // <embed src={file} className="w-[100%] h-[100%]"/>
-                    // <iframe src={file} type="application/pdf" />
-                } */}
             </div>
         </div>
     );

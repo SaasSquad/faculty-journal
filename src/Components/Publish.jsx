@@ -13,7 +13,7 @@ const Publish = ({ handlePublishPopUp, handleSubmit, title, setTitle, descriptio
             <form className="md:w-[60vw] ml-[10vw] flex-col mt-[10vw] md:mt-9" onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="file" className="md:w-[40vw] text-base block mb-[10px]">UPLOAD YOUR FILE</label>
-                    <input type="file" accept="application/pdf" name="" id="file" onChange={(e) => setFile(e.target.files[0])} className="mb-[20px] bg-[#2516D4] py-[10px] px-[10px] text-[12px] rounded-md text-[white]" />
+                    <input type="file" accept="application/pdf" name="" onChange={(e) => setFile(e.target.files[0])} className="mb-[20px] bg-[#2516D4] py-[10px] px-[10px] text-[12px] rounded-md text-[white]" />
                 </div>
                 <div>
                     <label htmlFor="title" className="md:w-[40vw] block mr-[20px] mb-[15px] lg:font-bold">TITLE</label>
