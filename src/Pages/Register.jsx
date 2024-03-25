@@ -17,7 +17,6 @@ const Register = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate()
 
-  axios.defaults.withCredentials = true
 
   const handleSubmit = (e) => {
     e.preventDefault()

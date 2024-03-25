@@ -9,8 +9,7 @@ import axios from 'axios';
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
-  axios.defaults.withCredentials = true
+  
   const handleSubmit = (e) => {
     e.preventDefault()
     api.post('/login', { email, password })

@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../api/Api";
@@ -9,7 +8,6 @@ const DashboardHeader = ({ user }) => {
 
     const profileDropdownRef = useRef(null);
 
-    axios.defaults.withCredentials = true
     const handleLogout = () => {
         localStorage.clear()
         api.post('/signout')

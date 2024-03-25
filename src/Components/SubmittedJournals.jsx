@@ -7,13 +7,11 @@ const SubmittedJournals = () => {
   const [articles, setArticles] = useState([])
   const user = useContext(userContext)
 
-  axios.defaults.withCredentials = true
   useEffect(() => {
     const token = localStorage.getItem('jwt_token')
     api.get(`/admin/pending-articles/${token}`, { headers: { 'Authorization': `Bearer ${token}` } })
       .then(res => {
         setArticles(res.data)
-        console.log(res.data)
       })
       .catch(err => {
         console.log(err)
@@ -24,8 +22,7 @@ const SubmittedJournals = () => {
     const token = localStorage.getItem('jwt_token')
     api.put(`/admin/approve-article/${_id}`, { headers: { 'Authorization': `Bearer ${token}` } })
       .then(res => {
-        setArticles(res.data)
-        console.log(res.data)
+        location.reload()
       })
       .catch(err => {
         console.log(err)
@@ -38,7 +35,7 @@ const SubmittedJournals = () => {
     const token = localStorage.getItem('jwt_token')
     api.put(`/admin/reject/${_id}`, { headers: { 'Authorization': `Bearer ${token}` } })
       .then(res => {
-        setArticles(res.data)
+        location.reload()
         console.log(res.data)
       })
       .catch(err => {
