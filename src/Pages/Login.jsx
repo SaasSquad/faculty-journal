@@ -4,11 +4,11 @@ import { useState } from 'react';
 import api from '../api/Api';
 import { Link } from 'react-router-dom';
 import logo from '../assets/Images/logo.png'
-import axios from 'axios';
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
   
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -22,7 +22,7 @@ const Login = () => {
           window.location.href = '/dashboard'
         }
       })
-      .catch(err => console.log(err))
+      .catch(err => setError(err.response.data.error))
   }
 
   return (
@@ -65,6 +65,7 @@ const Login = () => {
           />
 
         </div>
+        {error && <p className='text-red-700 px-2 py1 rounded-md bg-yellow-200 mb-4 font-bold'>{error}</p>}
 
         <button
           className="bg-yellow-500 text-white py-3 px-10 rounded-md hover:bg-green-600 focus:outline-none focus:ring focus:border-blue-300 ml-0"

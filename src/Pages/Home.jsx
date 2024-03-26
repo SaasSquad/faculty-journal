@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Footer from '../Components/Footer'
-import api from '../api/Api'
+import api, { API_URL } from '../api/Api'
 
 const Home = () => {
 
@@ -18,21 +18,8 @@ const Home = () => {
             })
     }, [])
 
-    const handleOpenFile = (_id) => {
-        api.get(`/admin/file/${_id}`)
-                .then(res => {
-                    // let reader = new FileReader()
-                    // reader.readAsDataURL(res.data)
-                    // reader.onload = (e) => {
-                    //     setFile(e.target.result)
-                    // }
-                    // const file = res.data
-                    setFile(res.data)
-                    // console.log(res.data)
-            })
-            .catch(err => (
-                console.log(err)
-            ))
+    const showPdf = (pdf) => {
+        window.open(`${API_URL}/files/${pdf}`, "_blank", "noreferrer");
     }
 
     return (<>
@@ -66,7 +53,7 @@ const Home = () => {
                                     <p className="text-black text-sm">Author: {article.author.lastName} {article.author.firstName}</p>
                                     <p className="text-black text-sm">Academic status: {article.academicStatus}</p>
                                 </div>
-                                <button onClick={() => handleOpenFile(article._id)} className=" bg-blue-600 text-white mr-4 rounded-md px-4 py-2 text-lg font-semibold text-black">READ</button>
+                                <button onClick={() => showPdf(article.file)} className=" bg-blue-600 text-white mr-4 rounded-md px-4 py-2 text-lg font-semibold text-black">READ</button>
                             </div>
                         </div>
                     )
