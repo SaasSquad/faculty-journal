@@ -59,7 +59,7 @@ const Home = () => {
                     )
                 }) : <p className="mt-10 bg-[#d9d9d9] text-xl mx-8 md:mx-24 p-10">{articles}</p>}
                 <div className='flex justify-center mt-8'>
-                    <button className="bg-blue-950 text-white rounded-lg font-bold p-3 text-xl text-center">See more</button>
+                    <button className="bg-blue-950 text-white rounded-lg font-bold p-3 text-xl text-center"><a href="/publications">See more</a></button>
                 </div>
             </section>
 

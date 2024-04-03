@@ -22,7 +22,7 @@ const Publish = ({ handlePublishPopUp, handleSubmit, title, setTitle, descriptio
                 <div>
                     <textarea name="" id="" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Add abstract or description of journal" className="w-[60vw] h-[20vh] outline-none px-4 py-2 rounded-md"></textarea>
                 </div>
-                <button className="mt-6 rounded-md w-[60vw] py-3 bg-[#2516D4] text-white">PUBLISH</button>
+                <button className="mt-6 rounded-md w-[60vw] py-3 bg-[#2516D4] text-white">SUBMIT</button>
             </form>
         </section>
     </>);

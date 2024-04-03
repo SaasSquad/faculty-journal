@@ -64,7 +64,7 @@ function AdminDashboard() {
       <div className="bg-[#ffffff] md:mx-24 p-4 md:px-10 md:py-16">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="font-bold text-xl md:text-2xl">YOUR PUBLICATIONS</p>
-          <button onClick={handlePublishPopUp} className="rounded-lg px-4 md:px-8 py-2 text-white bg-[#2516d4] mt-4 md:mt-0">Publish</button>
+          <button onClick={handlePublishPopUp} className="rounded-lg px-4 md:px-8 py-2 text-white bg-[#2516d4] mt-4 md:mt-0">Submit</button>
         </div>
         <div className="bg-[#bdadad] mt-12 p-4 md:p-10">
           {
