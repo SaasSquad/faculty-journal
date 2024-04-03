@@ -32,8 +32,8 @@ const Home = () => {
                     </p>
                 </div>
                 <div className="flex justify-center">
-                    <button className="bg-blue-700 rounded-lg px-6 text-xl py-2 mr-12 font-bold">Current</button>
-                    <button className="bg-blue-700 rounded-lg px-6 text-xl py-2 ml-12 font-bold">Next</button>
+                    <a href="/publications"><button className="bg-blue-950 rounded-lg px-6 text-white text-xl py-2 font-bold ">View Journals</button></a>
+                    {/* <button className="bg-blue-700 rounded-lg px-6 text-xl py-2 ml-12 font-bold">Next</button> */}
                 </div>
             </section>
             <section>
