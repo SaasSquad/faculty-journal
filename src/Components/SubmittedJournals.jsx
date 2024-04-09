@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
-import api from "../api/Api";
 import axios from "axios";
+import api, { API_URL } from "../api/Api";
 import { userContext } from "../App";
 
 const SubmittedJournals = () => {
   const [articles, setArticles] = useState([])
   const user = useContext(userContext)
+
 
   useEffect(() => {
     const token = localStorage.getItem('jwt_token')
@@ -17,6 +18,12 @@ const SubmittedJournals = () => {
         console.log(err)
       })
   }, [])
+
+  const showPdf = (pdf) => {
+    window.open(`${API_URL}/files/${pdf}`, "_blank", "noreferrer");
+}
+
+
 
   const handleApprove = (_id) => {
     const token = localStorage.getItem('jwt_token')
@@ -61,9 +68,10 @@ const SubmittedJournals = () => {
                         <p className="text-black text-sm">Author: {article.author.lastName} {article.author.firstName}</p>
                         <p className="text-black text-sm">Academic status: {user.academicStatus}</p>
                       </div>
-                      <button className="bg-blue-600 justify-self-center text-sm text-white mr-4 rounded-md px-2 py-1 font-semibold">READ</button>
+                      <button className="bg-blue-600 justify-self-center text-sm text-white mr-4 rounded-md px-2 py-1 font-semibold" onClick={() => showPdf(article.file)}>READ</button>
                     </div>
                     <div className="ml-auto mt-2 flex flex-col">
+                    <button onClick={() => handleReject(article._id)} className="bg-[#4061cf] rounded-md px-[20px] py-[10px] text-white text-[10px] my-[10px]"><a href={`${API_URL}/files/${article.file}`} download>DOWNLOAD</a></button>
                       <button onClick={() => handleApprove(article._id)} className="bg-[#00BF35] rounded-md px-[20px] py-[10px] text-white text-[10px]">APPROVE</button>
                       <button onClick={() => handleReject(article._id)} className="bg-[#BF0000] rounded-md px-[20px] py-[10px] text-white text-[10px] mt-[10px]">DECLINE</button>
                     </div>

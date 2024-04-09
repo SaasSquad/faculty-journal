@@ -22,7 +22,8 @@ import api from './api/Api'
 import Permission from './Pages/Permission'
 import Profile from './Pages/Profile'
 import PDFViewer from './Pages/PDFViewer'
-import GuideForAuthors from '../GuideForAuthors'
+import GuideForAuthors from './Pages/GuideForAuthors'
+import CurrentJournal from './Pages/CurrentJournal'
 
 export const userContext = createContext()
 
@@ -51,8 +52,8 @@ function App() {
         {
           location.pathname != '/login'
           && location.pathname != '/register'
-          && location.pathname != '/dashboard'
-          && location.pathname !='/admindashboard'
+          // && location.pathname != '/dashboard'
+          // && location.pathname !='/admindashboard'
           && location.pathname != '/permission'
           && location.pathname != '/submissions'
           && location.pathname != '/profile'
@@ -66,6 +67,7 @@ function App() {
           <Route path='/editorial' element={<Editorial />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/dashboard' element={<Dashboard />} />
+          <Route path="/currentjournal" element={<CurrentJournal />} />
           <Route path='/permission' element={<Permission />} />
           <Route path='/admindashboard' element={<AdminDashBoard />} />
           <Route path='/contact' element={<Contact />} />

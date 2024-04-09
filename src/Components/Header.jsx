@@ -47,7 +47,7 @@ const Header = () => {
     }, []);
 
     return (
-        <header className="relative z-50 text-[#f3f3f5] font-bold opacity-100 bg-[#254385] box-border">
+        <header className="relative z-50 text-[#f3f3f5] font-bold opacity-100 bg-[#254385] box-border h-[60px] pt-">
             <div className={`flex justify-between md:justify-evenly items-center `}>
                 <div className='md:flex ml-10 items-center justify-center'>
                     <Link to="/" className="logo">
@@ -60,7 +60,7 @@ const Header = () => {
                 </div>
 
 
-                <div className='hidden md:flex ml-28'>
+                <div className='hidden md:flex ml-20 mt-0'>
                     <Navbar />
                 </div>
                 <div className='md:flex hidden items-center'>

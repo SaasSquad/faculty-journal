@@ -6,6 +6,7 @@ import ArticleGrid from '../Components/ArticleGrid';
 import AdminSubheader from '../Components/AdminSubheader';
 import { userContext } from '../App';
 import axios from 'axios';
+import PaperTracking from '../Components/PaperTracking';
 
 function AdminDashboard() {
   const user = useContext(userContext)
@@ -71,17 +72,18 @@ function AdminDashboard() {
         setDescription={setDescription}
         setFile={setFile}
       />}
-      <DashboardHeader user={user} />
-      <div className="bg-[#ffffff] md:mx-24 p-4 md:px-10 md:py-16">
+      {/* <DashboardHeader user={user} /> */}
+      <div className="bg-[#ffffff] md:mx-24 p-4 md:px-10 md:py-16 lg:mx-5 lg:py-5">
         <AdminSubheader handlePublishPopUp={handlePublishPopUp}/>
-        <div className="bg-[#bdadad] mt-12 p-4 md:p-10">
+        <PaperTracking />
+        {/* <div className="bg-[#bdadad] mt-12 p-4 md:p-10">
           {
             typeof (articles) == 'object' ?
               articles.map((article) => (
                 <ArticleGrid key={article._id} article={article} />)) :
               <p className="mt-10 bg-[#d9d9d9] text-xl mx-8 md:mx-24 p-10">{articles}</p>
           }
-        </div>
+        </div> */}
       </div>
 
 
