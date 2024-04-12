@@ -20,7 +20,7 @@ const Header = () => {
         api.post('/signout')
             .then(res => {
                 if (res.data === 'OK') {
-                    window.location.to = '/'
+                    window.location.href = '/'
                 }
             })
             .catch(err => {
@@ -51,7 +51,7 @@ const Header = () => {
         <header className="relative z-50 text-[#f3f3f5] font-bold opacity-100 bg-[#254385]">
             <div className={`flex justify-between md:justify-evenly items-center h-20`}>
             <div className='flex items-center justify-between ml-8 md:ml-0'>
-                    <Link to="https://lasu.edu.ng/home/" className="border-solid mr-2">
+                    <Link to="https://lasu.edu.ng/home/" target='_blank' className="border-solid mr-2">
                         <img
                             alt="Logo"
                             className="md:w-[100px] w-[110px] m-auto"
