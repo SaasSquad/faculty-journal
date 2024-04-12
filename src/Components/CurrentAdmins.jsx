@@ -17,6 +17,21 @@ const CurrentAdmin = () => {
             })
     }, [])
 
+    const removeAdmin = (id) => {
+        const token = localStorage.getItem('jwt_token')
+        api.put(`/disadmin/${token}?id=${id}`, { headers: { 'Authorization': `Bearer ${token}` } })
+            .then(res => {
+                console.log("success")
+                window.location.href = '/permission'
+            }).catch(
+                err => {
+                    if (err.response && err.response.status === 500) {
+                        return;
+                    }
+                }
+            )
+    }
+
     return (
         <>
             <div className="bg-[#BDADAD] px-[10px] py-[10px] mt-[5vh]">
@@ -25,9 +40,11 @@ const CurrentAdmin = () => {
                         adminUsers &&
                         adminUsers.map(adminUser => (
                             <li key={adminUser._id} >{adminUser.role === 'admin' &&
-                                <div className="flex justify-between mb-2 items-center bg-[#D9D9D9] py-[10px] px-[10px]">
+                                <div className="flex flex-col justify-between mb-2 bg-[#D9D9D9] py-[10px] px-[10px]">
                                     <p>Name: {adminUser.firstName} {adminUser.lastName}</p>
-                                    <button className="bg-[#BF0000] rounded-md px-[10px] px-3 py-1 h-10 text-xs text-[white]">Remove</button>
+                                    <p className="">Email: {adminUser.email}</p>
+                                    <p>Role: {adminUser.role}</p>
+                                    <button onClick={() => removeAdmin(adminUser._id)} className="bg-[#BF0000] rounded-md mt-4 py-1 h-10 text-xs text-[white]">Remove</button>
                                 </div>}
                             </li>
                         ))

@@ -16,7 +16,7 @@ const Permission = () => {
     <div>
     <DashboardHeader user={user} />
     </div>
-    <div className='w-[100vw] px-[10vw] pt-[20px] flex flex-col'>
+    <div className='mb-10 px-[10vw] pt-[20px] flex flex-col'>
         <button className='ml-auto bg bg-[#2516D4] py-[10px] px-[10px] text-[12px] rounded-xl text-white '><Link to="/admindashboard">Dashboard</Link></button>
         <div>
             <p className='font-bold text-lg text-center'>PERMISSION</p>
