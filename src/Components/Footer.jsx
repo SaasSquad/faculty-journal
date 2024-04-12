@@ -4,7 +4,7 @@ const Footer = () => {
 
    
 
-        <section className="bg-[#2313dc] flex flex-col md:flex-row text-white p-10 ">
+        <section className="bg-[#2313dc] flex flex-col md:flex-row text-white p-10 mt-32">
             <div className="md:ml-20 mb-10">
                 <h1 className="font-bold text-2xl mb-6">QUICK LINKS</h1>
                 <ul className="list-disc ml-6">

@@ -42,13 +42,13 @@ const Publications = () => {
         Find Publications
       </h1>
       <div className="text-center m-auto flex justify-center ">
-      <input className="sm:text-2xl md:text-4xl border-2 border-[#0000ff] py-2 pl-4 rounded-tl-full rounded-bl-full lg:h-[30px] lg:text-[10px] lg:w-[30vw]"
+      <input className="text-sm outline-none border-2 border-[#0000ff] py-2 pl-4 rounded-tl-full rounded-bl-full lg:w-[30vw]"
         type="text"
         value={searchTerm}
         onChange={handleSearchChange}
         placeholder="Search for articles or journals"
       />
-      <button className="bg-[#0000ff] py-2 px-[8px] font-bold text-white rounded-tr-full rounded-br-full lg:h-[30px]">Search</button>
+      <button className="bg-[#0000ff] py-2 px-4 font-bold text-white rounded-tr-full rounded-br-full">Search</button>
     </div>
      </section>
     <section className='m-5'>
