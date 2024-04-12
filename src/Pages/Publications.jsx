@@ -27,6 +27,8 @@ const Publications = () => {
 
     const [searchTerm, setSearchTerm] = useState('');
 
+    const filteredArticle = articles.filter(article => article.title.toLowerCase().includes(searchTerm.toLowerCase()))
+
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
@@ -50,7 +52,7 @@ const Publications = () => {
     </div>
      </section>
     <section className='m-5'>
-    {typeof (articles) == 'object' ? articles.map(article => {
+    {typeof (filteredArticle) == 'object' ? filteredArticle.map(article => {
                     return (
                         <div key={article._id} className="mt-10 bg-[#d9d9d9] mx-8 md:mx-24 p-10">
                             <h2 className="text-2xl font-semibold text-black">{article.title}</h2>
