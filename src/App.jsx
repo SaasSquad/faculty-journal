@@ -89,7 +89,16 @@ function App() {
           <Route path='/login' element={<Login />} />
           {/* <Route path='/pdfviewer' element={<PDFViewer />} /> */}
         </Routes>
-        <Footer />
+        {
+          location.pathname != '/login'
+          && location.pathname != '/register'
+          // && location.pathname != '/dashboard'
+          // && location.pathname !='/admindashboard'
+          // && location.pathname != '/permission'
+          // && location.pathname != '/submissions'
+          && location.pathname != '/profile'
+          ? <Footer /> : <></>
+        }
     </userContext.Provider>
   )
 }

@@ -35,8 +35,8 @@ const Register = () => {
   }
 
   return (
-    <div className='flex items-center justify-center h-screen pt-60'>
-      <form onSubmit={handleSubmit} className="mx-auto max-w-md bg-blue-900 bg-opacity-95 p-8 text-white">
+    <div className='flex bg-blue-200 items-center justify-center py-32'>
+      <form onSubmit={handleSubmit} className="mx-auto max-w-md bg-blue-900 rounded-lg bg-opacity-95 p-8 text-white">
         <div className="mb-4 text-center logo">
           <img
             src={logo}
