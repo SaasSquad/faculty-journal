@@ -24,6 +24,7 @@ import Profile from './Pages/Profile'
 import PDFViewer from './Pages/PDFViewer'
 import GuideForAuthors from './Pages/GuideForAuthors'
 import CurrentJournal from './Pages/CurrentJournal'
+import LogoBar from './Components/LogoBar'
 
 export const userContext = createContext()
 
@@ -49,6 +50,16 @@ function App() {
 
   return (
     <userContext.Provider value={user} className='App'>
+              {
+          location.pathname != '/login'
+          && location.pathname != '/register'
+          // && location.pathname != '/dashboard'
+          // && location.pathname !='/admindashboard'
+          && location.pathname != '/permission'
+          && location.pathname != '/submissions'
+          && location.pathname != '/profile'
+          ? <LogoBar /> : <></>
+        }
         {
           location.pathname != '/login'
           && location.pathname != '/register'

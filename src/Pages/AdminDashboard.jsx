@@ -76,17 +76,7 @@ function AdminDashboard() {
       <div className="bg-[#ffffff] md:mx-24 p-4 md:px-10 md:py-16 lg:mx-5 lg:py-5">
         <AdminSubheader handlePublishPopUp={handlePublishPopUp}/>
         <PaperTracking />
-        {/* <div className="bg-[#bdadad] mt-12 p-4 md:p-10">
-          {
-            typeof (articles) == 'object' ?
-              articles.map((article) => (
-                <ArticleGrid key={article._id} article={article} />)) :
-              <p className="mt-10 bg-[#d9d9d9] text-xl mx-8 md:mx-24 p-10">{articles}</p>
-          }
-        </div> */}
       </div>
-
-
       {
         publishPopUp &&
         <div className='absolute top-0 w-[100vw] h-[100vh] bg-black opacity-80' />

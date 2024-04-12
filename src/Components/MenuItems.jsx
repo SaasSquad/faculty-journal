@@ -40,7 +40,7 @@ const MenuItems = ({ items, depthLevel, mobileDrop }) => {
           <Dropdown submenus={items.submenu} mobileDrop={mobileDrop} dropdown={dropdown} depthLevel={depthLevel}/>
         </>
       ) : (
-        <div className={`${depthLevel > 0 && "pl-4 pb-2 w-56 text-sm text-white "} pl-[10px] hover:text-blue-600 text-[12px]`}>
+        <div className={`${depthLevel > 0 && "pl-4 pb-2 w-56 text-sm text-white "} pl-[10px] hover:text-blue-600 text-[15px]`}>
           <a href={items.url}>{items.title}</a>
         </div>
       )}

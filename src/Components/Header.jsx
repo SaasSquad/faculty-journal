@@ -47,19 +47,8 @@ const Header = () => {
     }, []);
 
     return (
-        <header className="relative z-50 text-[#f3f3f5] font-bold opacity-100 bg-[#254385] box-border h-[60px] pt-">
+        <header className="relative z-50 text-[#f3f3f5] font-bold opacity-100 bg-[#254385] box-border h-[60px] pt-[15px]">
             <div className={`flex justify-between md:justify-evenly items-center `}>
-                <div className='md:flex ml-10 items-center justify-center'>
-                    <Link to="/" className="logo">
-                        <img
-                            alt="Logo"
-                            className="w-[20px] transform rotate-90 box-border m-auto"
-                            src={logo}
-                        />
-                    </Link>
-                </div>
-
-
                 <div className='hidden md:flex ml-20 mt-0'>
                     <Navbar />
                 </div>
@@ -101,7 +90,6 @@ const Header = () => {
                             )}
                         </div> : <Link to={'/login'} className="hover:text-blue-600">REGISTER/LOGIN</Link>
                     }
-                    <FontAwesomeIcon icon={faMagnifyingGlass} className='text-xl ml-5 hover:text-blue-600 cursor-pointer' />
                 </div>
                 {
                     mobileDropdown ?

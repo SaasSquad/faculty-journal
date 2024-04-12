@@ -3,6 +3,7 @@ import Footer from '../Components/Footer'
 import api, { API_URL } from '../api/Api'
 import { Link } from "react-router-dom"
 import journalImg from '../assets/Images/journalImg.png'
+import LogoBar from '../Components/LogoBar'
 
 const Home = () => {
 
@@ -25,6 +26,7 @@ const Home = () => {
     }
 
     return (<>
+    
         <div className="box-border">
 
             <section className="bg-[#d9d9d9] pt-5 pb-5">
@@ -34,7 +36,7 @@ const Home = () => {
                     </p>
                 </div>
                 <div className="flex justify-center">
-                    <a href="/publications"><button className="bg-blue-950 rounded-lg px-6 text-white text-xl py-2 font-bold "><Link to="currentjournal">View Journals</Link></button></a>
+                    <a href="/publications"><button className="bg-blue-950 rounded-lg px-6 text-white text-xl py-2 font-bold "><Link to="/currentjournal">View Journals</Link></button></a>
                     {/* <button className="bg-blue-700 rounded-lg px-6 text-xl py-2 ml-12 font-bold">Next</button> */}
                 </div>
             </section>

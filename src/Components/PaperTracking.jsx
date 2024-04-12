@@ -40,16 +40,16 @@ function PaperTracking() {
     <section className="border-solid border-2 border-[#2516d4] rounded-[5px] mt-5">
         <h1 className="text-white bg-[#2516d4] pl-[10px]">Paper Tracking</h1>
         <div className="overflow-hidden lg:overflow-hidden">
-            <div className="whitespace-nowrap overflow-x-scroll border-solid border-[2px] border-black-800 pb-[5px]lg:overflow-hidden"><strong className="mx-[10px]">S/N</strong><strong className="mr-[150px] lg:mr-[35vw]">Title</strong><strong className="mr-[50px] lg:mr-[20vw]">Status</strong><strong className="mr-[50px]">Action</strong> <strong className="mr-[50px]">Date</strong></div>
+            <div className="whitespace-nowrap overflow-x-scroll border-solid border-[2px] border-black-800 pb-[5px]lg:overflow-hidden"><strong className="mx-[10px]">S/N</strong><strong className="mr-[150px] lg:mr-[30vw]">Title</strong><strong className="mr-[50px] lg:mr-[15vw]">Status</strong><strong className="mr-[50px] lg:mr-[10vw]">Action</strong> <strong className="mr-[50px]">Date</strong></div>
         </div>
         <br />
         <div>
             {
                 typeof(articles) == "object" ? articles.map((article, index) => (
-                    <div className="whitespace-nowrap overflow-x-scroll border-solid border-[2px] border-black-800 pb-[5px]lg:overflow-hidden " key={index}><strong className="mx-[10px]">{index}</strong><strong className="mr-[150px] lg:mr-[35vw]">{article.title}</strong><strong className="mr-[50px] lg:mr-[20vw]">{article.isApproved ? <p className="absolute text-green-700 top-6 right-10">Approved</p> : <p className="absolute text-yellow-600 top-6 right-10">Pending</p>}</strong><strong className="mr-[50px]">                <div className="">
-                    <button onClick={() => showPdf(article.file)} className=" bg-blue-600 text-white mr-4 rounded-md px-2 py-1 font-semibold ">READ</button>
-                    <button onClick={() => handleDelete(article._id)} className="bg-red-700 text-white rounded-md px-2 py-1 font-semibold ">DELETE</button>
-                </div></strong> <strong className="mr-[50px]">{article.createdAt}</strong></div>
+                    <div className="whitespace-nowrap overflow-x-scroll border-solid border-[2px] border-black-800 pb-[5px]lg:overflow-hidden flex scrollbar-none" key={index}><strong className="mx-[10px]">{index + 1}</strong><strong className="mr-[150px] lg:w-[20vw]">{article.title}</strong><strong className="mr-[50px] lg:w-[15vw]">{article.isApproved ? <p className="text-green-700 ">Approved</p> : <p className="absolute text-yellow-600 ">Pending</p>}</strong><strong className="mr-[30px]"><div className="lg:w-[12vw]">
+                    <button onClick={() => showPdf(article.file)} className=" bg-blue-600 text-white mr-[5px] rounded-md px-2 py-1 font-semibold lg:text-[10px]">READ</button>
+                    <button onClick={() => handleDelete(article._id)} className="bg-red-700 text-white rounded-md px-1 py-1 font-semibold  lg:text-[10px] ">DELETE</button>
+                </div></strong> <p className="mr-[50px]">{article.createdAt.slice(0, 10)}</p></div>
                 )) : <p>No Submissions</p>
             }
         </div>
