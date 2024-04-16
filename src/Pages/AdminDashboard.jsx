@@ -73,7 +73,7 @@ function AdminDashboard() {
         setFile={setFile}
       />}
       {/* <DashboardHeader user={user} /> */}
-      <div className="bg-[#ffffff] md:mx-24 p-4 md:px-10 md:py-16 lg:mx-5 lg:py-5">
+      <div className="bg-[#ffffff] md:mx-24 p-4 md:px-14 md:py-16 lg:mx-14 lg:py-5">
         <AdminSubheader handlePublishPopUp={handlePublishPopUp}/>
         <PaperTracking />
       </div>

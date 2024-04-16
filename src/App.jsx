@@ -25,6 +25,7 @@ import PDFViewer from './Pages/PDFViewer'
 import GuideForAuthors from './Pages/GuideForAuthors'
 import CurrentJournal from './Pages/CurrentJournal'
 import LogoBar from './Components/LogoBar'
+import Footer from './Components/Footer'
 
 export const userContext = createContext()
 
@@ -50,7 +51,7 @@ function App() {
 
   return (
     <userContext.Provider value={user} className='App'>
-              {
+              {/* {
           location.pathname != '/login'
           && location.pathname != '/register'
           // && location.pathname != '/dashboard'
@@ -59,14 +60,14 @@ function App() {
           && location.pathname != '/submissions'
           && location.pathname != '/profile'
           ? <LogoBar /> : <></>
-        }
+        } */}
         {
           location.pathname != '/login'
           && location.pathname != '/register'
           // && location.pathname != '/dashboard'
           // && location.pathname !='/admindashboard'
-          && location.pathname != '/permission'
-          && location.pathname != '/submissions'
+          // && location.pathname != '/permission'
+          // && location.pathname != '/submissions'
           && location.pathname != '/profile'
           ? <Header /> : <></>
         }
@@ -88,6 +89,16 @@ function App() {
           <Route path='/login' element={<Login />} />
           {/* <Route path='/pdfviewer' element={<PDFViewer />} /> */}
         </Routes>
+        {
+          location.pathname != '/login'
+          && location.pathname != '/register'
+          // && location.pathname != '/dashboard'
+          // && location.pathname !='/admindashboard'
+          // && location.pathname != '/permission'
+          // && location.pathname != '/submissions'
+          && location.pathname != '/profile'
+          ? <Footer /> : <></>
+        }
     </userContext.Provider>
   )
 }

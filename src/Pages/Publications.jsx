@@ -48,7 +48,7 @@ const Publications = () => {
         onChange={handleSearchChange}
         placeholder="Search for articles or journals"
       />
-      <button className="bg-[#0000ff] py-2 px-[8px] font-bold text-white rounded-tr-full rounded-br-full lg:h-[50px]">Search</button>
+      <button className="bg-[#0000ff] py-2 px-[8px] font-bold text-white rounded-tr-full rounded-br-full lg:h-[30px]">Search</button>
     </div>
      </section>
     <section className='m-5'>

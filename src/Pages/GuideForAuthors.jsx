@@ -4,7 +4,7 @@ import Footer from "../Components/Footer"
 const GuideForAuthors = () => {
     return (
         <>
-        <div className="container mx-auto px-4 py-8 bg-[#FAFAFA]">
+        <div className="px-28 py-8 bg-[#FAFAFA]">
             <h1 className="text-2xl font-bold mb-4">Guide for Authors</h1>
             <h2 className="text-xl">Manusript Preparation:</h2>
             <p className="mb-4">
@@ -104,9 +104,6 @@ const GuideForAuthors = () => {
             Offprints:
             A copy of the journal issue in which the article appears will be available upon request.
             </p>
-        </div>
-        <div>
-            <Footer />
         </div>
         </>
     );

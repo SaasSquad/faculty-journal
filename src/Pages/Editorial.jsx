@@ -2,7 +2,7 @@ import Footer from "../Components/Footer"
 
 const Editorial = () => {
     return ( <>
-    <div className="p-5 bg-[#FAFAFA]">
+    <div className="py-5 px-28 bg-[#FAFAFA]">
         <h1 className="text-xl pb-5">EDITORIAL POLICY</h1>
         <p className="mb-5">
         Engineering and Technology Research Journal is a peer-review journal. All articles submitted for consideration will be reviewed by three expert reviewers in the field of study of the submitted article(s). The article will further be subjected to plagiarism test which must be less than 10%.
@@ -31,7 +31,6 @@ const Editorial = () => {
         One set of page proofs will be sent by e-mail to the corresponding author, to be checked for typesetting/editing. The corrections should be returned within 72 hours. No changes in, or additions to, the accepted (and subsequently edited) manuscript will be allowed at this stage. Proofreading is solely the author`s responsibility. Any queries should be answered in full. Please correct factual errors only, or errors introduced by typesetting.
         </p>
     </div>
-    <Footer />
     </> );
 }
  

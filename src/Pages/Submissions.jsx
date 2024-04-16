@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import SubmittedJournals from '../Components/SubmittedJournals';
 import DashboardHeader from '../Components/DashboardHeader';
 import { userContext } from '../App';
+import Header from '../Components/Header';
 
 const Submissions = () => {
   const user = useContext(userContext)
@@ -12,7 +13,7 @@ const Submissions = () => {
   return (
     <>
     <div>
-    <DashboardHeader user={user} />
+    {/* <DashboardHeader user={user} /> */}
     </div>
     <div className='w-[100vw] px-[10vw] pt-[20px] flex flex-col'>
         <button className='ml-auto bg bg-[#2516D4] py-[10px] px-[10px] text-[12px] rounded-xl text-white '><Link to="/admindashboard">Dashboard</Link></button>

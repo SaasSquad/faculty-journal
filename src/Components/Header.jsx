@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import Navbar from './NavBar';
-import logo from '../assets/Images/logo.png'
+import logo from '../assets/Images/lasu.png'
+import jlogo from '../assets/Images/jlogo.png'
 import defaultDP from '../assets/Images/defaultDP.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faBars, faX } from '@fortawesome/free-solid-svg-icons';
@@ -19,7 +20,7 @@ const Header = () => {
         api.post('/signout')
             .then(res => {
                 if (res.data === 'OK') {
-                    window.location.to = '/'
+                    window.location.href = '/'
                 }
             })
             .catch(err => {
@@ -47,9 +48,26 @@ const Header = () => {
     }, []);
 
     return (
-        <header className="relative z-50 text-[#f3f3f5] font-bold opacity-100 bg-[#254385] box-border h-[60px] pt-[15px]">
-            <div className={`flex justify-between md:justify-evenly items-center `}>
-                <div className='hidden md:flex ml-20 mt-0'>
+        <header className="relative z-50 text-[#f3f3f5] font-bold opacity-100 bg-[#254385]">
+            <div className={`flex justify-between md:justify-evenly items-center h-20`}>
+            <div className='flex items-center justify-between ml-8 md:ml-0'>
+                    <Link to="https://lasu.edu.ng/home/" target='_blank' className="border-solid mr-2">
+                        <img
+                            alt="Logo"
+                            className="md:w-[100px] w-[110px] m-auto"
+                            src={logo}
+                        />
+                    </Link>
+                    <span className='border-l border-solid border-gray-900 h-8'></span>
+                    <Link to="/" className="ml-2">
+                        <img
+                            alt="jLogo"
+                            className="md:w-[170px] w-[110px] m-auto"
+                            src={jlogo}
+                        />
+                    </Link>
+                </div>
+                <div className='hidden -ml-12 md:flex mt-0'>
                     <Navbar />
                 </div>
                 <div className='md:flex hidden items-center'>
@@ -68,7 +86,7 @@ const Header = () => {
                                 <div
                                     className="absolute -right-10 text-center mt-2 font-bold w-48 bg-white rounded-lg shadow-lg"
                                 >
-                                    <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                                    <Link to="/profile" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                                         Profile
                                     </Link>
                                     {

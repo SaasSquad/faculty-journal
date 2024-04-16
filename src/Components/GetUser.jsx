@@ -39,6 +39,7 @@ const GetUser = () => {
 
     return (<>
         <div className="pt-[30px]">
+            <p className="text-md font-semibold mb-2">Please input the user's email below to search for their account and grant them editor privileges.</p>
             <div className="flex justify-between w-[100%]">
                 <input type="text" onChange={(e) => handleSearch(e)} placeholder="Enter Email Address" className="w-[88%] outline-none mr-4 bg-[#D9D9D9] py-3 px-4 rounded-lg" />
                 <button onClick={handleSubmitSearch} className="bg-[#2516D4] font-bold py-3 px-4 text-[12px] rounded-lg text-[white]">Search</button>
