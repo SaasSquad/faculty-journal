@@ -124,11 +124,11 @@ const Header = () => {
             {
                 mobileDropdown &&
                 <>
-                    <div className='absolute bg-[#072975] h-64 text-white w-[100%] flex md:hidden'>
+                    <div className='relative pb-12 bg-[#072975] text-white w-[100%] flex md:hidden'>
                         <Navbar mobileDrop="mobileDrop" />
                         {
-                            user.firstName ? user.role === 'admin' ? <Link to={'/admindashboard'} className="absolute left-32 mt-56 hover:text-blue-600">{user.firstName} {user.lastName}</Link> :
-                                <Link to={'/dashboard'} className="absolute left-32 mt-56 hover:text-blue-600">{user.firstName} {user.lastName}</Link> : <Link to={'/login'} className="absolute left-32 mt-56 hover:text-blue-600">REGISTER/LOGIN</Link>
+                            user.firstName ? user.role === 'admin' ? <Link to={'/admindashboard'} className="mt-56 hover:text-blue-600">{user.firstName} {user.lastName}</Link> :
+                                <Link to={'/dashboard'} className="mt-56 hover:text-blue-600">{user.firstName} {user.lastName}</Link> : <Link to={'/login'} className="relative mt-56 hover:text-blue-600">REGISTER/LOGIN</Link>
                         }
                     </div>
                 </>

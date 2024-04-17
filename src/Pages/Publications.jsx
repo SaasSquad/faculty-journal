@@ -38,7 +38,7 @@ const Publications = () => {
   return (
     <>
      <section className="search_section mb-[10px]">
-     <h1 className="text-2xl md:text-6xl text-center my-[20px] font-bold text-[#0000ff] lg:text-xl">
+     <h1 className="text-3xl md:text-6xl text-center my-[20px] font-bold text-[#0000ff] lg:text-xl">
         Find Publications
       </h1>
       <div className="text-center m-auto flex justify-center ">

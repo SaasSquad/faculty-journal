@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
-import Footer from '../Components/Footer'
 import api, { API_URL } from '../api/Api'
-import { Link } from 'react-router-dom'
 
 function CurrentJournal() {
     const [articles, setArticles] = useState([])

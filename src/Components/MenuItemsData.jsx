@@ -4,8 +4,18 @@ export const menuItemsData = [
         url: '/',
     },
     {
-        title: 'PUBLICATONS',
-        url: '/publications',
+        title: 'PAPERS',
+        url: '/',
+        submenu: [
+            {
+                title: 'PUBLICATONS',
+                url: '/publications',
+            },
+            {
+                title: 'ARCHIVE',
+                url: '/archive',
+            }
+        ]
     },
     {
         title: 'EDITORIAL POLICY',

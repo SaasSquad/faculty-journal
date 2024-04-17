@@ -26,6 +26,7 @@ import GuideForAuthors from './Pages/GuideForAuthors'
 import CurrentJournal from './Pages/CurrentJournal'
 import LogoBar from './Components/LogoBar'
 import Footer from './Components/Footer'
+import ArchivePage from './Pages/ArchivePage'
 
 export const userContext = createContext()
 
@@ -87,6 +88,7 @@ function App() {
           <Route path='/faqs' element={<Faqs />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/archive' element={<ArchivePage />} />
           {/* <Route path='/pdfviewer' element={<PDFViewer />} /> */}
         </Routes>
         {

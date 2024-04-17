@@ -12,9 +12,7 @@ const DashboardHeader = ({ user }) => {
         localStorage.clear()
         api.post('/signout')
             .then(res => {
-                if (res.data === 'OK') {
-                    window.location.to = '/'
-                }
+                window.location.href = '/'
             })
             .catch(err => {
                 console.log(err.message)
@@ -49,8 +47,8 @@ const DashboardHeader = ({ user }) => {
                         className="text-white font-bold bg-[#d9d9d9] rounded-full px-4 py-2"
                     >
                         <img
-                        className="w-[20px] m-auto"
-                        src={defaultDP} alt="" />
+                            className="w-[20px] m-auto"
+                            src={defaultDP} alt="" />
                     </button>
                     {showProfileDropdown && (
                         <div
@@ -61,12 +59,12 @@ const DashboardHeader = ({ user }) => {
                             </Link>
                             {
                                 user.role === 'admin' ?
-                                <Link to="/admindashboard" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
-                                Dashboard
-                            </Link>
-                            : <Link to="/dashboard" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
-                                Dashboard
-                            </Link>
+                                    <Link to="/admindashboard" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                                        Dashboard
+                                    </Link>
+                                    : <Link to="/dashboard" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                                        Dashboard
+                                    </Link>
                             }
                             <Link to="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                                 Preferences
