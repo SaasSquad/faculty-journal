@@ -32,7 +32,7 @@ const Home = () => {
                 <section className="bg-[#d9d9d9] pt-12 pb-20">
                     <div className="flex justify-center pb-14 pt-8">
                         <p className="font-bold text-3xl text-blue-950 w-80 text-center">
-                            Lagos State University Engineering And Technology Resarch Journal.
+                            Annals of Science, Engineering, and Technology Innovations
                         </p>
                     </div>
                     <div className="flex justify-center">
